@@ -31,6 +31,7 @@ body {
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 a:active,
@@ -143,9 +144,8 @@ body,
 }
 
 .noise {
-    position: absolute;
+    position: fixed;
     inset: 0;
-    height: 100vh;
     background-image: url("/assets/noise.webp");
     mix-blend-mode: overlay;
     pointer-events: none;
