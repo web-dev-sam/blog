@@ -1,15 +1,71 @@
 ---
+import "../styles/global.css";
+import Navigation from "../components/Navigation.astro";
+import LandingPageBackground from "../components/LandingPageBackground.astro";
+
+import { contentfulClient } from "../lib/contentful";
+import type { BlogPost } from "../lib/contentful";
+import Head from "../components/Head.astro";
+
+const entries = await contentfulClient.getEntries<BlogPost>({
+    content_type: "blog",
+});
+
+const posts = entries.items.map((item) => {
+    const { title, date, description, slug } = item.fields;
+    return {
+        title,
+        slug,
+        description,
+        date: new Date(date).toLocaleDateString(),
+    };
+});
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Coming soon...</h1>
-	</body>
+    <head>
+        <Head />
+        <title>Webry | The modern web blog</title>
+    </head>
+    <body class="noise-wrapper">
+        <div class="noise"></div>
+        <LandingPageBackground />
+        <Navigation />
+        <main>
+            <h2 class="sr-only">Welcome on the modern web blog</h2>
+            <p class="sr-only">
+                This is a new blog about the modern web. I will be writing about
+                topics like web development, web design, and web performance.
+            </p>
+            <h2 class="sr-only">Blog Articles</h2>
+            {
+                posts.map((post) => (
+                    <article class="flow-content">
+                        <a href={`/posts/${post.slug}/`}>
+                            <h2 class="text-heading">{post.title}</h2>
+                        </a>
+                        <time class="sr-only">{post.date}</time>
+                        <p>{post.description}</p>
+                        <a
+                            class="btn text-button"
+                            href={`/posts/${post.slug}/`}
+                        >
+                            Read More
+                        </a>
+                    </article>
+                ))
+            }
+        </main>
+
+        <style>
+            article {
+                text-align: center;
+                max-width: 600px;
+                margin: 30vh auto 0 auto;
+            }
+        </style>
+        <script>
+            import "../scripts/background.ts";
+        </script>
+    </body>
 </html>

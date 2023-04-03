@@ -1,0 +1,154 @@
+:root {
+    --color-text-green: #4ba716;
+    --color-green: #5cca1c;
+    --color-lime: #b9f107;
+    --color-red: #ca3f1c;
+    --color-black: #1d1d1d;
+    --color-white: #fff;
+    --color-gray: #555;
+    --color-light-gray: #e0e0e080;
+
+    --web-bg: var(--color-white);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background-color: var(--web-bg);
+    font-family: Montserrat, sans-serif;
+}
+
+body {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 160ch;
+    padding: 0 3rem;
+    line-height: 2;
+    color: var(--color-black);
+}
+
+a {
+    text-decoration: none;
+}
+
+a:active,
+a:visited,
+a:hover {
+    color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+figure {
+    margin: 0;
+}
+
+figure img {
+    max-width: 100%;
+}
+
+code {
+    background-color: var(--color-light-gray);
+    color: var(--color-text-green);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+pre code {
+    padding: 0;
+}
+
+.line-numbers .line-numbers-rows {
+    border: none !important;
+}
+
+.flow-content>*+* {
+    margin-top: 1.5rem;
+}
+
+/* General styles */
+
+.text-logo {
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.text-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2rem;
+    vertical-align: middle;
+}
+
+body,
+.text-text {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.text-button {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.flex-spacer {
+    flex: 1;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-black);
+    color: var(--color-white) !important;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+.article a {
+    color: var(--color-text-green) !important;
+    text-decoration: wavy underline var(--color-text-green);
+    font-weight: 700;
+}
+
+.article a:hover {
+    opacity: 0.85;
+}
+
+.noise-wrapper {
+    position: relative;
+    isolation: isolate;
+}
+
+.noise {
+    position: absolute;
+    inset: 0;
+    height: 100vh;
+    background-image: url("/assets/noise.webp");
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    opacity: 0.6;
+    z-index: -1;
+}

@@ -1,0 +1,128 @@
+---
+import "../../styles/global.css";
+
+import { contentfulClient } from "../../lib/contentful";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import type { Options } from "@contentful/rich-text-html-renderer";
+import type { BlogPost } from "../../lib/contentful";
+import { default as encodeGravatarEmail } from "js-md5";
+
+import LandingPageBackground from "../../components/LandingPageBackground.astro";
+import Navigation from "../../components/Navigation.astro";
+import Head from "../../components/Head.astro";
+
+export async function getStaticPaths() {
+    const { items } = await contentfulClient.getEntries<BlogPost>({
+        content_type: "blog",
+    });
+    const renderOptions: Partial<Options> = {
+        renderNode: {
+            "embedded-asset-block": (node) => {
+                console.log(node.data.target.fields);
+                const fieldData = node.data.target.fields;
+                const contentType = fieldData.file.contentType;
+                const size = fieldData.file.details.size;
+                const alt = fieldData.title;
+                const url = fieldData.file.url;
+                const caption = fieldData.description;
+                if (size > 300000) {
+                    console.error(
+                        "This image is too big",
+                        size,
+                        fieldData.file.fileName
+                    );
+                }
+
+                if (contentType.startsWith("image/")) {
+                    return `
+                        <figure>
+                            <img src="${url}" alt="${alt}" />
+                            <figcaption>${caption}</figcaption>
+                        </figure>
+                    `;
+                }
+                return "";
+            },
+            blockquote: (node) => {
+                const language = node.content[0].content[0].value;
+                const code = node.content
+                    .map((c: any) =>
+                        c.content.map((c: any) => c.value).join("\n")
+                    )
+                    .join("\n")
+                    .replace(language, "")
+                    .trim();
+                return `<pre class="line-numbers"><code class="language-${language}" data-prismjs-copy="Copy">${code}</code></pre>`;
+            },
+        },
+    };
+
+    const pages = items.map((item) => ({
+        params: { slug: item.fields.slug },
+        props: {
+            title: item.fields.title,
+            content: documentToHtmlString(item.fields.content, renderOptions),
+            date: new Date(item.fields.date).toLocaleDateString(),
+        },
+    }));
+    return pages;
+}
+
+const { content, title, date } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <Head />
+        <title>{title}</title>
+        
+        <link href="/css/prism.css" rel="stylesheet" />
+    </head>
+    <body class="noise-wrapper">
+        <div class="noise"></div>
+        <LandingPageBackground />
+        <Navigation />
+        <main class="flow-content">
+            <h1 class="text-heading">{title}</h1>
+            <time class="sr-only">{date}</time>
+            <div class="author">
+                <img
+                    src={"https://www.gravatar.com/avatar/" +
+                        encodeGravatarEmail("office.samigo.a@gmail.com")}
+                    alt="Author"
+                    class="author__image"
+                />
+                <div class="author__name">Samuel Braun</div>
+            </div>
+            <article set:html={content} class="flow-content article" />
+        </main>
+        <style>
+            main {
+                max-width: 80ch;
+                margin: 0 auto;
+            }
+
+            h1 {
+                margin-top: 10vh;
+            }
+
+            .author {
+                display: flex;
+                align-items: center;
+                margin-top: 2rem;
+            }
+
+            .author__image {
+                width: 3rem;
+                height: 3rem;
+                border-radius: 50%;
+                margin-right: 1rem;
+            }
+
+            .noise {
+                position: fixed;
+            }
+        </style>
+        <script src="/js/prism.js" is:inline></script>
+    </body>
+</html>
