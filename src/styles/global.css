@@ -55,19 +55,9 @@ figure img {
     max-width: 100%;
 }
 
-code {
-    background-color: var(--color-light-gray);
-    color: var(--color-text-green);
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-}
-
-pre code {
-    padding: 0;
-}
-
-.line-numbers .line-numbers-rows {
-    border: none !important;
+pre {
+    padding-left: 1rem;
+    border-radius: 0.5rem;
 }
 
 .flow-content>*+* {
