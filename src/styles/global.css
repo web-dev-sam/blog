@@ -47,18 +47,53 @@ p {
     margin: 0;
 }
 
-figure {
-    margin: 0;
+h2 {
+    margin-top: 3rem;
 }
 
-figure img {
-    max-width: 100%;
+h3 {
+    margin-top: 2rem;
+}
+
+.main-markdown-content {
+    text-align: justify;
+}
+
+p:has(img) {
+    text-align: center;
+}
+
+p img {
+    border-radius: 0.5rem;
+    margin: 1.5rem auto;
+}
+
+ul + pre {
+    margin-left: 2.5rem;
+}
+
+:not(pre) > code {
+    background-color: var(--color-light-gray);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    color: var(--color-red);
 }
 
 pre {
-    padding-left: 1rem;
+    padding: 1rem;
     border-radius: 0.5rem;
 }
+
+.main-markdown-content a {
+    color: var(--color-text-green) !important;
+    text-decoration: wavy underline var(--color-text-green);
+    font-weight: 700;
+}
+
+a:hover {
+    opacity: 0.85;
+}
+
 
 .flow-content>*+* {
     margin-top: 1.5rem;
@@ -115,16 +150,6 @@ body,
 }
 
 .btn:hover {
-    opacity: 0.85;
-}
-
-.article a {
-    color: var(--color-text-green) !important;
-    text-decoration: wavy underline var(--color-text-green);
-    font-weight: 700;
-}
-
-.article a:hover {
     opacity: 0.85;
 }
 

@@ -1,4 +1,10 @@
 ---
+
+interface Props {
+    colors?: [string, string]
+}
+
+const { colors = ["#38BB22", "#DBFF00"] } = Astro.props;
 ---
 
 <div class="page-background">
@@ -102,8 +108,8 @@
                 y2="1309.04"
                 gradientUnits="userSpaceOnUse"
             >
-                <stop stop-color="#38BB22"></stop>
-                <stop offset="1" stop-color="#DBFF00"></stop>
+                <stop stop-color={colors[0]}></stop>
+                <stop offset="1" stop-color={colors[1]}></stop>
             </linearGradient>
             <clipPath id="clip0_14_318">
                 <rect width="1440" height="1024" fill="white"></rect>
@@ -227,7 +233,7 @@
     }
 </style>
 <script>
-    const MIN_OPACITY = 0.36;
+    const MIN_OPACITY = 0.3;
     const MAX_OPACITY = 1;
     const FADE_IN_DISTANCE = window.innerHeight * 0.75;
 

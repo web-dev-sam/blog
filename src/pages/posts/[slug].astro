@@ -7,9 +7,12 @@ import { CollectionEntry, getCollection } from "astro:content";
 import LandingPageBackground from "../../components/LandingPageBackground.astro";
 import Navigation from "../../components/Navigation.astro";
 import Head from "../../components/Head.astro";
+import DevToIcon from "../../components/icons/DevToIcon.astro";
+import LinkedInIcon from "../../components/icons/LinkedInIcon.astro";
 
 export async function getStaticPaths() {
     const posts = await getCollection("blog");
+    const authors = await getCollection("author");
 
     return posts.map((post) => {
         return {
@@ -18,6 +21,9 @@ export async function getStaticPaths() {
             },
             props: {
                 post,
+                author: authors.find(
+                    (author) => author.slug === post.data.author
+                ),
             },
         };
     });
@@ -25,9 +31,10 @@ export async function getStaticPaths() {
 
 interface Props {
     post: CollectionEntry<"blog">;
+    author: CollectionEntry<"author">;
 }
 
-const { post } = Astro.props;
+const { post, author } = Astro.props;
 const { Content } = await post.render();
 ---
 
@@ -38,43 +45,128 @@ const { Content } = await post.render();
     </head>
     <body class="noise-wrapper">
         <div class="noise"></div>
-        <LandingPageBackground />
+        <LandingPageBackground colors={["cyan", "blue"]} />
         <Navigation />
-        <main class="flow-content">
-            <h1 class="text-heading">{post.data.title}</h1>
-            <time class="sr-only">{post.data.date}</time>
-            <div class="author">
-                <img
-                    src={"https://www.gravatar.com/avatar/" +
-                        encodeGravatarEmail("office.samigo.a@gmail.com")}
-                    alt="Author"
-                    class="author__image"
-                />
-                <div class="author__name">Samuel Braun</div>
+        <main>
+            <div>
+                {
+                    post.data.cover ? (
+                        <img src={post.data.cover} alt="Post Cover" class="cover" />
+                    ) : (
+                        ""
+                    )
+                }
             </div>
-            <Content />
+            <div class="content">
+                <h1 class="text-heading">{post.data.title}</h1>
+                <div class="author-wrapper">
+                    <div class="author">
+                        <img
+                            src={author.data.image}
+                            alt="Author"
+                            class="author__image"
+                        />
+                        <div class="author__name">
+                            {author.data.name}<br />
+                            <time
+                                >Published on {
+                                    new Date(post.data.date).toLocaleDateString()
+                                }</time
+                            >
+                        </div>
+                    </div>
+                    <div class="socials">
+                        <a
+                            href={author.data.devto}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <DevToIcon />
+                        </a>
+                        <a
+                            href={author.data.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <LinkedInIcon />
+                        </a>
+                    </div>
+                </div>
+                <div class="main-markdown-content">
+                    <Content />
+                </div>
+            </div>
         </main>
+        <script>
+            const links = document.querySelectorAll("main a");
+            links.forEach((link) => {
+                if (
+                    link instanceof HTMLLinkElement &&
+                    link.href.startsWith("http")
+                ) {
+                    link.setAttribute("target", "_blank");
+                    link.setAttribute("rel", "noopener noreferrer");
+                }
+            });
+        </script>
         <style>
             main {
                 max-width: 80ch;
                 margin: 0 auto;
+                margin-top: 5vh;
+                border-radius: 0.5rem;
+                background-color: var(--color-white);
+                box-shadow: 0 0 3rem 3rem #ffffff80;
+                border: 1px solid var(--color-light-gray);
             }
 
-            h1 {
-                margin-top: 10vh;
+            .content {
+                padding: 3rem 3rem;
+            }
+
+            img {
+                max-width: 100%;
+            }
+
+            .cover {
+                border-radius: 0.5rem;
+            }
+
+            .author-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
 
             .author {
                 display: flex;
                 align-items: center;
-                margin-top: 2rem;
+                margin: 2rem 0;
             }
 
             .author__image {
-                width: 3rem;
-                height: 3rem;
+                width: 2.5rem;
+                height: 2.5rem;
                 border-radius: 50%;
                 margin-right: 1rem;
+            }
+
+            .author__name {
+                line-height: 1.5rem;
+            }
+
+            .author__name time {
+                opacity: 0.5;
+            }
+
+            .socials {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .socials a:hover {
+                color: var(--color-green);
             }
 
             .noise {
