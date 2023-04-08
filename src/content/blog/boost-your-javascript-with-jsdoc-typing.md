@@ -13,7 +13,7 @@ tags:
   - type checking
 
 share:
-  image: https://webry.com/assets/blog/boost-your-javascript-with-jsdoc-typing/cover.jpg
+  image: https://webry.com/assets/blog/boost-your-javascript-with-jsdoc-typing/og-cover.jpg
   title: Boost Your JavaScript with JSDoc Typing
   description: >
     Explore my in-depth guide on leveraging JSDoc to enhance your JavaScript code with robust typing. Boost code quality, maintainability, and developer productivity with this powerful tool.
