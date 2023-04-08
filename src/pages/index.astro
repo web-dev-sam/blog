@@ -2,8 +2,11 @@
 import "../styles/global.css";
 import Navigation from "../components/Navigation.astro";
 import LandingPageBackground from "../components/LandingPageBackground.astro";
-
 import Head from "../components/Head.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+const post = posts[0];
 ---
 
 <html lang="en">
@@ -17,12 +20,13 @@ import Head from "../components/Head.astro";
         <Navigation />
         <main>
             <article class="flow-content">
+                <h1>Welcome to Webry</h1>
+                <p>My new blog about the modern web. (This site is currently work in progress. But you can already read my first blog down below.)</p>
                 <a href={`/posts/boost-your-javascript-with-jsdoc-typing/`}>
-                    <h2 class="text-heading">Blog coming soon</h2>
+                    <h2 class="text-heading">{post.data.title}</h2>
                 </a>
                 <p>
-                    This is a new blog site about the modern web. I will be writing about
-                    topics like web development, web design, and web performance.
+                    {post.data.share.description}
                 </p>
                 <a
                     class="btn text-button"
@@ -37,7 +41,19 @@ import Head from "../components/Head.astro";
             article {
                 text-align: center;
                 max-width: 600px;
-                margin: 30vh auto 0 auto;
+                margin: 20vh auto 0 auto;
+            }
+
+            h1 {
+                font-size: 3rem;
+                font-weight: 700;
+                margin-bottom: 0rem;
+            }
+
+            h1 + p {
+                margin: 0 !important;
+                font-size: 1.25rem;
+                margin-bottom: 10rem !important;
             }
         </style>
         <script>

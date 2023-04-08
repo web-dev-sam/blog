@@ -130,21 +130,32 @@ const { Content } = await post.render();
         </script>
         <style>
             main {
-                max-width: 80ch;
+                max-width: 100ch;
                 margin: 0 auto;
                 margin-top: 5vh;
                 border-radius: 0.5rem;
                 background-color: var(--color-white);
-                box-shadow: 0 0 3rem 3rem #ffffff80;
+                box-shadow: 0 0 var(--padding-big) var(--padding-big) #ffffff80;
                 border: 1px solid var(--color-light-gray);
             }
 
             .content {
-                padding: 3rem 3rem;
+                padding: var(--padding-big);
             }
 
-            img {
-                max-width: 100%;
+            .content h1 {
+                font-size: clamp(1.953rem, 5vw, 3.052rem);
+                line-height: 1.25em;
+            }
+
+            .content h2 {
+                font-size: clamp(1.563rem, 5vw, 2.441rem);
+                line-height: 1.25em;
+            }
+
+            .content h3 {
+                font-size: clamp(1.25rem, 5vw, 1.953rem);
+                line-height: 1.25em;
             }
 
             .cover {
@@ -176,16 +187,6 @@ const { Content } = await post.render();
 
             .author__name time {
                 opacity: 0.5;
-            }
-
-            .socials {
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .socials a:hover {
-                color: var(--color-green);
             }
 
             .noise {

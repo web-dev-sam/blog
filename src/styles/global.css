@@ -9,6 +9,15 @@
     --color-light-gray: #e0e0e080;
 
     --web-bg: var(--color-white);
+    --padding-big: 3rem;
+    --padding-body: var(--padding-big);
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --padding-big: 1.5rem;
+        --padding-body: 0;
+    }
 }
 
 * {
@@ -24,7 +33,7 @@ body {
     margin: 0 auto;
     width: 100%;
     max-width: 160ch;
-    padding: 0 3rem;
+    padding: 0 var(--padding-body);
     line-height: 2;
     color: var(--color-black);
 }
@@ -61,6 +70,11 @@ h3 {
 
 p:has(img) {
     text-align: center;
+}
+
+img {
+    max-width: 100%;
+    max-height: 28rem;
 }
 
 p img {
@@ -166,4 +180,17 @@ body,
     pointer-events: none;
     opacity: 0.6;
     z-index: -1;
+}
+
+/* Content Styles */
+
+.socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.socials a:hover {
+    color: var(--color-green);
 }

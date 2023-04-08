@@ -4,15 +4,58 @@ import "../styles/global.css";
 import Navigation from "../components/Navigation.astro";
 import LandingPageBackground from "../components/LandingPageBackground.astro";
 import Head from "../components/Head.astro";
+import { CollectionEntry, getCollection } from "astro:content";
+import DevToIcon from "../components/icons/DevToIcon.astro";
+import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
+
+const authors = await getCollection("author");
+const author = authors.find((author) => author.slug === "samuel-braun");
 ---
 
 <html lang="en">
     <head>
         <Head />
-        <title>asd</title>
+        <title>About Webry</title>
     </head>
     <body>
         <LandingPageBackground />
         <Navigation />
+        <div class="flow-content">
+            <h1>Hello</h1>
+            <h2>I'm Samuel Braun</h2>
+            <p>
+                Webry is a project I started to share my knowledge and
+                experience as well as tools I build. Its all about the modern
+                web. This is a place where I can share my thoughts and ideas
+                with the world. More content will be added soon.
+            </p>
+            <p>You can follow my journey on LinkedIn and Dev.to.</p>
+            <div class="socials">
+                <a
+                    href={author.data.devto}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <DevToIcon />
+                </a>
+                <a
+                    href={author.data.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <LinkedInIcon />
+                </a>
+            </div>
+        </div>
+
+        <style>
+            body {
+                text-align: center;
+            }
+
+            h1 {
+                margin-top: 20vh;
+            }
+        </style>
     </body>
 </html>
