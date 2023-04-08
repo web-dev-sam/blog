@@ -4,6 +4,7 @@ import Navigation from "../components/Navigation.astro";
 import LandingPageBackground from "../components/LandingPageBackground.astro";
 import Head from "../components/Head.astro";
 import { getCollection } from "astro:content";
+import Analytics from "../components/Analytics.astro";
 
 const posts = await getCollection("blog");
 const post = posts[0];
@@ -13,6 +14,8 @@ const post = posts[0];
     <head>
         <Head />
         <title>Webry | The modern web blog</title>
+        <meta name="description" content="My new blog about the modern web. (This site is currently work in progress. But you can already read my first blog down below.)" />
+        <Analytics />
     </head>
     <body class="noise-wrapper">
         <div class="noise"></div>
