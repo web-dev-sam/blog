@@ -10,7 +10,7 @@ import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
 import Analytics from "../components/Analytics.astro";
 
 const authors = await getCollection("author");
-const author = authors.find((author) => author.slug === "samuel-braun");
+const author = authors.find((author) => author.slug === "samuel-braun")!;
 ---
 
 <html lang="en">
