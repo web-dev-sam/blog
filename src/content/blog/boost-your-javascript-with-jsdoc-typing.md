@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 
 date: 2023-04-08
 title: Boost Your JavaScript with JSDoc Typing
@@ -13,10 +13,10 @@ tags:
   - type checking
 
 share:
-  image: https://www.gravatar.com/avatar/66c345087b31844a2d0c78ade5b3a163
+  image: https://webry.com/assets/blog/boost-your-javascript-with-jsdoc-typing/cover.jpg
   title: Boost Your JavaScript with JSDoc Typing
   description: >
-    A comprehensive guide to using JSDoc to type your JavaScript code. Learn how to use JSDoc to add type information to your JavaScript code, and how to use that information to improve your code.
+    Explore my in-depth guide on leveraging JSDoc to enhance your JavaScript code with robust typing. Boost code quality, maintainability, and developer productivity with this powerful tool.
 ---
 There are many reasons why you can't or don't want to use TypeScript in your project. One common reason is that you are using a legacy codebase that is not compatible with TypeScript. Or the switch to TypeScript is harder than everyone tells you. For whatever reason, you are stuck with JavaScript. But that doesnt completely mean you have to give up on the benefits of TypeScript. In this article, we will explore the magic of JSDoc typing, with which you can use most TypeScript features right away. 🧙‍♂️
 

@@ -8,7 +8,7 @@ export const collections = {
             title: z.string(),
             author: z.string(),
             cover: z.string().optional(),
-            tags: z.array(z.string()).optional(),
+            tags: z.array(z.string()),
             share: z
                 .object({
                     image: z.string().url().optional(),
