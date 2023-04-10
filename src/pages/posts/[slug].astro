@@ -35,6 +35,32 @@ interface Props {
 }
 
 const { post, author } = Astro.props;
+const schema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": "https://www.webry.com/posts/" + post.slug,
+    },
+    headline: post.data.title,
+    description: post.data.share.description,
+    image: `https://www.webry.com/assets/blog/${post.slug}/cover.jpg`,
+    author: {
+        "@type": "Person",
+        name: author.data.name,
+        url: author.data.linkedin,
+    },
+    publisher: {
+        "@type": "Organization",
+        name: "Webry",
+        logo: {
+            "@type": "ImageObject",
+            url: "https://www.webry.com/assets/branding/logo-light.svg",
+        },
+    },
+    datePublished: post.data.date.toISOString(),
+    dateModified: post.data.moddate.toISOString(),
+});
 const { Content } = await post.render();
 ---
 
@@ -70,9 +96,10 @@ const { Content } = await post.render();
         <meta property="og:locale" content="en_US" />
         <meta property="og:locale:alternate" content="en_GB" />
 
-        <link rel="canonical" href={post.data.devto} />
-
         <title>{post.data.title}</title>
+
+        <link rel="canonical" href={post.data.devto} />
+        <script type="application/ld+json" set:html={schema}></script>
         <Analytics />
     </head>
     <body>

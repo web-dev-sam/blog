@@ -9,6 +9,12 @@ import ArrowDown from "../components/icons/ArrowDown.astro";
 import Footer from "../components/Footer.astro";
 
 const posts = await getCollection("blog");
+const schema = {
+    "@context": "https://schema.org/",
+    "@type": "WebSite",
+    name: "Webry",
+    url: "https://www.webry.com/",
+};
 ---
 
 <html lang="en">
@@ -19,6 +25,8 @@ const posts = await getCollection("blog");
             name="description"
             content="Welcome to The Modern Web Blog. Here you will find articles on modern web development, best practices, and more."
         />
+        <link rel="canonical" href="https://www.webry.com/" />
+        <script type="application/ld+json" set:html={schema}></script>
         <Analytics />
     </head>
     <body>

@@ -2,6 +2,7 @@
 draft: false
 
 date: 2023-04-08
+moddate: 2021-04-08
 title: Boost Your JavaScript with JSDoc Typing
 author: samuel-braun
 cover: /assets/blog/boost-your-javascript-with-jsdoc-typing/cover.jpg

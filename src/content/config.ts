@@ -5,6 +5,7 @@ export const collections = {
         schema: z.object({
             draft: z.boolean().default(false),
             date: z.date().transform((str) => new Date(str)),
+            moddate: z.date().transform((str) => new Date(str)),
             title: z.string(),
             author: z.string(),
             cover: z.string(),
@@ -23,8 +24,8 @@ export const collections = {
         schema: z.object({
             name: z.string(),
             image: z.string(),
-            devto: z.string().url().optional(),
-            linkedin: z.string().url().optional(),
+            devto: z.string().url(),
+            linkedin: z.string().url(),
         }),
     }),
 };
