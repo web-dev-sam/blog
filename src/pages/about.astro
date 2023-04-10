@@ -7,6 +7,7 @@ import { CollectionEntry, getCollection } from "astro:content";
 import DevToIcon from "../components/icons/DevToIcon.astro";
 import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
 import Analytics from "../components/Analytics.astro";
+import Footer from "../components/Footer.astro";
 
 const authors = await getCollection("author");
 const author = authors.find((author) => author.slug === "samuel-braun")!;
@@ -17,45 +18,61 @@ const author = authors.find((author) => author.slug === "samuel-braun")!;
         <Head />
         <title>About Webry</title>
         <Analytics />
-    </head>
-    <body>
-        <Navigation />
-        <div class="flow-content">
-            <h1>Hello</h1>
-            <h2>I'm Samuel Braun</h2>
-            <p>
-                Webry is a project I started to share my knowledge and
-                experience as well as tools I build. Its all about the modern
-                web. This is a place where I can share my thoughts and ideas
-                with the world. More content will be added soon.
-            </p>
-            <p>You can follow my journey on LinkedIn and Dev.to.</p>
-            <div class="socials">
-                <a
-                    href={author.data.devto}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <DevToIcon />
-                </a>
-                <a
-                    href={author.data.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <LinkedInIcon />
-                </a>
-            </div>
-        </div>
 
         <style>
             body {
                 text-align: center;
             }
 
-            h1 {
-                margin-top: 20vh;
+            main {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .socials__devto:hover {
+                color: var(--color-primary);
+            }
+
+            .socials__linkedin:hover {
+                color: #378fe9;
             }
         </style>
+    </head>
+    <body>
+        <Navigation />
+        <main class="container">
+            <section class="flow-content-big">
+                <h1>Hey, I'm Samuel Braun</h1>
+                <p>
+                    Webry is a project I started to share my knowledge and
+                    experience as well as tools I build. Its all about the
+                    modern web. This is a place where I can share my thoughts
+                    and ideas with the world. More content will be added soon.
+                    You can follow my journey on LinkedIn and Dev.to:
+                </p>
+                <div class="socials">
+                    <a
+                        href={author.data.devto}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="socials__devto"
+                        aria-label="Visit Samuel Braun's Dev.to profile"
+                    >
+                        <DevToIcon />
+                    </a>
+                    <a
+                        href={author.data.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="socials__linkedin"
+                        aria-label="Visit Samuel Braun's LinkedIn profile"
+                    >
+                        <LinkedInIcon />
+                    </a>
+                </div>
+            </section>
+        </main>
+        <Footer />
     </body>
 </html>

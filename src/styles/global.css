@@ -2,6 +2,7 @@
     --color-primary: #F5A814;
     --color-dark-primary: #1e1e1e;
     --color-dark-secondary: #353535;
+    --color-primary-2: #378fe9; 
     --color-text-green: #4ba716;
     --color-green: #5cca1c;
     --color-lime: #b9f107;
@@ -213,8 +214,4 @@ body,
     align-items: center;
     justify-content: center;
     gap: 1rem;
-}
-
-.socials a:hover {
-    color: var(--color-green);
 }
