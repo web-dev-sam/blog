@@ -3,7 +3,6 @@ import "../../styles/global.css";
 
 import { CollectionEntry, getCollection } from "astro:content";
 
-import LandingPageBackground from "../../components/LandingPageBackground.astro";
 import Navigation from "../../components/Navigation.astro";
 import Head from "../../components/Head.astro";
 import DevToIcon from "../../components/icons/DevToIcon.astro";
@@ -68,9 +67,7 @@ const { Content } = await post.render();
         <title>{post.data.title}</title>
         <Analytics />
     </head>
-    <body class="noise-wrapper">
-        <div class="noise"></div>
-        <LandingPageBackground  />
+    <body>
         <Navigation />
         <main>
             <!-- <div>
@@ -147,21 +144,6 @@ const { Content } = await post.render();
 
             .content {
                 padding: var(--padding-big);
-            }
-
-            .content h1 {
-                font-size: clamp(1.953rem, 5vw, 3.052rem);
-                line-height: 1.25em;
-            }
-
-            .content h2 {
-                font-size: clamp(1.563rem, 5vw, 2.441rem);
-                line-height: 1.25em;
-            }
-
-            .content h3 {
-                font-size: clamp(1.25rem, 5vw, 1.953rem);
-                line-height: 1.25em;
             }
 
             .cover {

@@ -1,17 +1,49 @@
 ---
 ---
 
-<div class="nav-links">
-    <a href="/" class="text-logo">Webry</a>
-    <div class="flex-spacer"></div>
-    <a href="/about/">About</a>
+<div class="navigation">
+    <nav class="container">
+        <ul class="nav-header">
+            <li>
+                <a href="/">
+                    <picture>
+                        <source
+                            media="(max-width: 479px)"
+                            srcset="/assets/branding/logo-dark.svg"
+                        />
+                        <source
+                            media="(min-width: 480px)"
+                            srcset="/assets/branding/logo-dark-long.svg"
+                        />
+                        <img
+                            class="nav-header__logo"
+                            src="/assets/branding/logo-dark-long.svg"
+                            alt="Logo"
+                        />
+                    </picture>
+                </a>
+            </li>
+            <li class="flex-spacer"></li>
+            <li><a href="/posts/">Blogs</a></li>
+            <li><a href="/about/">About</a></li>
+        </ul>
+    </nav>
 </div>
 
 <style>
-    .nav-links {
+    .navigation {
+    }
+
+    .nav-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 6rem;
+        text-transform: uppercase;
+        gap: var(--padding-big);
+        height: var(--header-height);
+    }
+
+    .nav-header__logo {
+        height: 2.5rem;
     }
 </style>

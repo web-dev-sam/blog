@@ -1,62 +1,207 @@
 ---
 import "../styles/global.css";
 import Navigation from "../components/Navigation.astro";
-import LandingPageBackground from "../components/LandingPageBackground.astro";
 import Head from "../components/Head.astro";
 import { getCollection } from "astro:content";
 import Analytics from "../components/Analytics.astro";
+import ArrowDown from "../components/icons/ArrowDown.astro";
 
 const posts = await getCollection("blog");
-const post = posts[0];
 ---
 
 <html lang="en">
     <head>
         <Head />
-        <title>Webry | The modern web blog</title>
-        <meta name="description" content="My new blog about the modern web. (This site is currently work in progress. But you can already read my first blog down below.)" />
+        <title>Webry | The Modern Web Blog</title>
+        <meta
+            name="description"
+            content="My new blog about the modern web. (This site is currently work in progress. But you can already read my first blog down below.)"
+        />
         <Analytics />
     </head>
-    <body class="noise-wrapper">
-        <div class="noise"></div>
-        <LandingPageBackground />
+    <body>
         <Navigation />
+        <section class="hero">
+            <h1>
+                <span class="hero__before">Welcome to</span>
+                <span>The <em>Modern</em> Web Blog</span>
+            </h1>
+        </section>
         <main>
-            <article class="flow-content">
-                <h1>Welcome to Webry</h1>
-                <p>My new blog about the modern web. (This site is currently work in progress. But you can already read my first blog down below.)</p>
-                <a href={`/posts/boost-your-javascript-with-jsdoc-typing/`}>
-                    <h2 class="text-heading">{post.data.title}</h2>
-                </a>
-                <p>
-                    {post.data.share.description}
-                </p>
-                <a
-                    class="btn text-button"
-                    href={`/posts/boost-your-javascript-with-jsdoc-typing/`}
-                >
-                    Read More
-                </a>
-            </article>
+            <div class="container">
+                <section class="blogs">
+                    <div class="blogs_header">
+                        <h2 class="blogs__title">Blogs</h2>
+                        <div class="blogs__arrow">
+                            <ArrowDown />
+                        </div>
+                    </div>
+                    <div class="blogs__grid">
+                        {
+                            posts.map((post) => (
+                                <article class="card">
+                                    <img
+                                        src={post.data.cover}
+                                        alt="JSDoc Typing"
+                                        class="card-img"
+                                    />
+                                    <div class="card__content flow-content">
+                                        <h2 class="card-title">
+                                            Boost Your JavaScript with JSDoc
+                                            Typing
+                                        </h2>
+                                        <p class="card-description">
+                                            Explore my in-depth guide on
+                                            leveraging JSDoc to enhance your
+                                            JavaScript code with robust typing.
+                                            Boost code quality, maintainability,
+                                            and developer productivity with this
+                                            powerful tool.
+                                        </p>
+                                        <a
+                                            class="btn card-button"
+                                            aria-label="Read more about Boost Your JavaScript with JSDoc Typing"
+                                            href={`/posts/${post.slug}`}
+                                        >
+                                            Read more
+                                        </a>
+                                    </div>
+                                </article>
+                            ))
+                        }
+                    </div>
+                </section>
+            </div>
         </main>
-
+        <footer>
+            <div class="container">
+                <ul class="footer__rights">
+                    <li>
+                        &copy; {
+                            new Date().getFullYear()
+                        } Webry
+                    </li>
+                    <li class="flex-spacer"></li>
+                    <li>
+                        <a href="/privacy">Privacy</a>
+                    </li>
+                    <li>
+                        <a href="/terms">Terms</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+        
         <style>
-            article {
+            /* HERO */
+
+            .hero {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-transform: uppercase;
                 text-align: center;
-                max-width: 600px;
-                margin: 20vh auto 0 auto;
+                height: calc(100vh - var(--header-height) * 2);
             }
 
-            h1 {
-                font-size: 3rem;
-                font-weight: 700;
-                margin-bottom: 0rem;
+            .hero h1 {
+                
             }
 
-            h1 + p {
-                margin: 0 !important;
-                font-size: 1.25rem;
-                margin-bottom: 10rem !important;
+            @media (min-width: 768px) {
+                .hero h1 {
+                    transform: translateY(calc(-0.5 * var(--header-height)));
+                }
+            }
+
+            .hero__before {
+                display: block;
+                font-size: var(--p-font-size);
+                color: var(--color-gray-500);
+            }
+
+            /* BLOGS */
+
+            .blogs {
+                text-align: center;
+            }
+
+            .blogs__title {
+                text-transform: uppercase;
+                font-size: var(--h4-font-size);
+            }
+
+            .blogs__grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
+                justify-content: center;
+                gap: var(--padding-big);
+                margin: var(--padding-big) auto;
+            }
+
+            .blogs_header {
+                height: var(--header-height);
+                display: flex;
+                flex-direction: column;
+            }
+
+            .card {
+                background: var(--color-dark-secondary);
+                border-radius: var(--border-radius);
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+            }
+
+            .card__content {
+                padding: var(--padding-big) var(--padding-big);
+            }
+
+            .card-img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+
+            .card-title {
+                font-size: 20px;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            .card-description {
+                font-size: 14px;
+            }
+
+            .card-button {
+                background-color: #007bff;
+                color: white;
+                font-weight: bold;
+                text-transform: uppercase;
+                border: none;
+                padding: 8px 12px;
+                border-radius: var(--border-radius);
+                cursor: pointer;
+                align-self: flex-start;
+            }
+
+            .card-button:hover {
+                background-color: var(--color-primary);
+            }
+
+            .blogs__arrow {
+                margin: var(--padding-small) auto;
+                display: block;
+            }
+
+            /* FOOTER */
+            .footer__rights {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: var(--padding-big);
+                padding: var(--padding-big) 0;
+                list-style: none;
             }
         </style>
         <script>

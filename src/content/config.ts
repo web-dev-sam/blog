@@ -7,7 +7,7 @@ export const collections = {
             date: z.date().transform((str) => new Date(str)),
             title: z.string(),
             author: z.string(),
-            cover: z.string().optional(),
+            cover: z.string(),
             tags: z.array(z.string()),
             canonical: z.string().url().optional(),
             share: z

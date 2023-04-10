@@ -2,7 +2,6 @@
 import "../styles/global.css";
 
 import Navigation from "../components/Navigation.astro";
-import LandingPageBackground from "../components/LandingPageBackground.astro";
 import Head from "../components/Head.astro";
 import { CollectionEntry, getCollection } from "astro:content";
 import DevToIcon from "../components/icons/DevToIcon.astro";
@@ -20,7 +19,6 @@ const author = authors.find((author) => author.slug === "samuel-braun")!;
         <Analytics />
     </head>
     <body>
-        <LandingPageBackground />
         <Navigation />
         <div class="flow-content">
             <h1>Hello</h1>

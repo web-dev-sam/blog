@@ -1,22 +1,36 @@
 :root {
+    --color-primary: #F5A814;
+    --color-dark-primary: #1e1e1e;
+    --color-dark-secondary: #353535;
     --color-text-green: #4ba716;
     --color-green: #5cca1c;
     --color-lime: #b9f107;
     --color-red: #ca3f1c;
-    --color-black: #1d1d1d;
+    --color-black: #1e1e1e;
     --color-white: #fff;
     --color-gray: #555;
     --color-light-gray: #e0e0e080;
 
-    --web-bg: var(--color-white);
+    --web-bg: var(--color-black);
     --padding-big: 3rem;
+    --padding-small: 1rem;
+    --flow-content-small: 1rem;
+    --flow-content-big: 3rem;
     --padding-body: var(--padding-big);
+    --header-height: 8rem;
+    --border-radius: 0.5rem;
+
+    --h1-font-size: clamp(1.953rem, 5vw, 3.052rem);
+    --h2-font-size: clamp(1.563rem, 5vw, 2.441rem);
+    --h3-font-size: clamp(1.25rem, 5vw, 1.953rem);
+    --h4-font-size: clamp(1rem, 3vw, 1.563rem);
+    --p-font-size: 1rem;
 }
 
 @media screen and (max-width: 768px) {
     :root {
         --padding-big: 1.5rem;
-        --padding-body: 0;
+        --header-height: 6rem;
     }
 }
 
@@ -24,18 +38,27 @@
     box-sizing: border-box;
 }
 
-html {
-    background-color: var(--web-bg);
-    font-family: Montserrat, sans-serif;
-}
-
 body {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 160ch;
+    margin: 0;
     padding: 0 var(--padding-body);
     line-height: 2;
-    color: var(--color-black);
+    font-family: Montserrat, sans-serif;
+    color: var(--color-white);
+    background: var(--web-bg);
+}
+
+main {
+    min-height: 75vh;
+}
+
+img {
+    max-width: 100%;
+    max-height: 28rem;
+}
+
+em {
+    font-style: normal;
+    color: var(--color-primary);
 }
 
 a {
@@ -56,12 +79,23 @@ p {
     margin: 0;
 }
 
+h1 {
+    font-size: clamp(1.953rem, 5vw, 3.052rem);
+    line-height: 1.25em;
+}
+
 h2 {
-    margin-top: 3rem;
+    font-size: clamp(1.563rem, 5vw, 2.441rem);
+    line-height: 1.25em;
 }
 
 h3 {
-    margin-top: 2rem;
+    font-size: clamp(1.25rem, 5vw, 1.953rem);
+    line-height: 1.25em;
+}
+
+.btn {
+    display: inline-block;
 }
 
 .main-markdown-content {
@@ -72,10 +106,6 @@ p:has(img) {
     text-align: center;
 }
 
-img {
-    max-width: 100%;
-    max-height: 28rem;
-}
 
 p img {
     border-radius: 0.5rem;
@@ -104,22 +134,16 @@ pre {
     font-weight: 700;
 }
 
-a:hover {
-    opacity: 0.85;
-}
-
 
 .flow-content>*+* {
-    margin-top: 1.5rem;
+    margin-top: var(--flow-content-small);
+}
+
+.flow-content-big>*+* {
+    margin-top: var(--flow-content-big);
 }
 
 /* General styles */
-
-.text-logo {
-    font-size: 2rem;
-    font-weight: 900;
-    text-transform: uppercase;
-}
 
 .text-heading {
     font-size: 2rem;
