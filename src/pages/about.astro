@@ -29,14 +29,6 @@ const author = authors.find((author) => author.slug === "samuel-braun")!;
                 align-items: center;
                 justify-content: center;
             }
-
-            .socials__devto:hover {
-                color: var(--color-primary);
-            }
-
-            .socials__linkedin:hover {
-                color: #378fe9;
-            }
         </style>
     </head>
     <body>
@@ -58,6 +50,7 @@ const author = authors.find((author) => author.slug === "samuel-braun")!;
                         rel="noopener noreferrer"
                         class="socials__devto"
                         aria-label="Visit Samuel Braun's Dev.to profile"
+                        title="Visit Samuel Braun's Dev.to profile"
                     >
                         <DevToIcon />
                     </a>
@@ -67,6 +60,7 @@ const author = authors.find((author) => author.slug === "samuel-braun")!;
                         rel="noopener noreferrer"
                         class="socials__linkedin"
                         aria-label="Visit Samuel Braun's LinkedIn profile"
+                        title="Visit Samuel Braun's LinkedIn profile"
                     >
                         <LinkedInIcon />
                     </a>

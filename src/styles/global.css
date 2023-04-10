@@ -2,7 +2,7 @@
     --color-primary: #F5A814;
     --color-dark-primary: #1e1e1e;
     --color-dark-secondary: #353535;
-    --color-primary-2: #378fe9; 
+    --color-primary-2: #378fe9;
     --color-text-green: #4ba716;
     --color-green: #5cca1c;
     --color-lime: #b9f107;
@@ -113,28 +113,21 @@ p img {
     margin: 1.5rem auto;
 }
 
-ul + pre {
+ul+pre {
     margin-left: 2.5rem;
 }
 
-:not(pre) > code {
-    background-color: var(--color-light-gray);
+:not(pre)>code {
+    background-color: var(--color-dark-secondary);
     padding: 0.25rem 0.5rem;
+    margin: 2px;
     border-radius: 0.25rem;
-    color: var(--color-red);
 }
 
 pre {
     padding: 1rem;
     border-radius: 0.5rem;
 }
-
-.main-markdown-content a {
-    color: var(--color-text-green) !important;
-    text-decoration: wavy underline var(--color-text-green);
-    font-weight: 700;
-}
-
 
 .flow-content>*+* {
     margin-top: var(--flow-content-small);
@@ -192,21 +185,6 @@ body,
     opacity: 0.85;
 }
 
-.noise-wrapper {
-    position: relative;
-    isolation: isolate;
-}
-
-.noise {
-    position: fixed;
-    inset: 0;
-    background-image: url("/assets/noise.webp");
-    mix-blend-mode: overlay;
-    pointer-events: none;
-    opacity: 0.6;
-    z-index: -1;
-}
-
 /* Content Styles */
 
 .socials {
@@ -214,4 +192,96 @@ body,
     align-items: center;
     justify-content: center;
     gap: 1rem;
+}
+
+.socials__devto:hover {
+    color: var(--color-primary);
+}
+
+.socials__linkedin:hover {
+    color: #378fe9;
+}
+
+/* BLOGS */
+
+.posts {
+    text-align: center;
+}
+
+.posts__title {
+    text-transform: uppercase;
+    font-size: var(--h4-font-size);
+}
+
+.posts__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
+    justify-content: center;
+    gap: var(--padding-big);
+    margin: var(--padding-big) auto;
+}
+
+.card {
+    background: var(--color-dark-secondary);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.card__content {
+    padding: var(--padding-big) var(--padding-big);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.card-description {
+    font-size: 14px;
+}
+
+.card-button {
+    background-color: var(--color-primary-2);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.card-button:hover {
+    opacity: 0.85;
+}
+
+/* POST */
+
+.main-markdown-content :is(h1, h2, h3, h4, h5, h6) {
+    margin-top: 1.5em;
+}
+
+.main-markdown-content a {
+    color: var(--color-primary) !important;
+    text-decoration: wavy underline var(--color-primary);
+    font-weight: bold;
+}
+
+.main-markdown-content a:hover {
+    opacity: 0.85;
+}
+
+.main-markdown-content :is(ul, ol) {
+    list-style: disc;
+    margin-left: 2.5rem;
 }

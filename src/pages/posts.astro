@@ -1,12 +1,12 @@
 ---
 import "../styles/global.css";
-import { getCollection } from "astro:content";
 
 import Navigation from "../components/Navigation.astro";
 import Head from "../components/Head.astro";
+import { getCollection } from "astro:content";
 import Analytics from "../components/Analytics.astro";
-import ArrowDown from "../components/icons/ArrowDown.astro";
 import Footer from "../components/Footer.astro";
+import ArrowDown from "../components/icons/ArrowDown.astro";
 
 const posts = await getCollection("blog");
 ---
@@ -14,30 +14,25 @@ const posts = await getCollection("blog");
 <html lang="en">
     <head>
         <Head />
-        <title>Webry | The Modern Web Blog</title>
-        <meta
-            name="description"
-            content="My new blog about the modern web. (This site is currently work in progress. But you can already read my first blog down below.)"
-        />
+        <title>Webry's Posts</title>
         <Analytics />
+
+        <style>
+            body {
+                text-align: center;
+            }
+
+            main {
+                margin-top: 6rem;
+            }
+        </style>
     </head>
     <body>
         <Navigation />
-        <section class="hero">
-            <h1>
-                <span class="hero__before">Welcome to</span>
-                <span>The <em>Modern</em> Web Blog</span>
-            </h1>
-        </section>
-        <main>
-            <div class="container">
+        <main class="container">
+            <section class="flow-content-big">
+                <h1>Posts</h1>
                 <section class="posts">
-                    <div class="posts_header">
-                        <h2 class="posts__title">Posts</h2>
-                        <div class="posts__arrow">
-                            <ArrowDown />
-                        </div>
-                    </div>
                     <div class="posts__grid">
                         {
                             posts.map((post) => (
@@ -73,50 +68,8 @@ const posts = await getCollection("blog");
                         }
                     </div>
                 </section>
-            </div>
+            </section>
         </main>
         <Footer />
-
-        <style>
-            /* HERO */
-
-            .hero {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-transform: uppercase;
-                text-align: center;
-                height: calc(100vh - var(--header-height) * 2);
-            }
-
-            .hero h1 {
-            }
-
-            @media (min-width: 768px) {
-                .hero h1 {
-                    transform: translateY(calc(-0.5 * var(--header-height)));
-                }
-            }
-
-            .hero__before {
-                display: block;
-                font-size: var(--p-font-size);
-                color: var(--color-gray-500);
-            }
-
-            .posts_header {
-                height: var(--header-height);
-                display: flex;
-                flex-direction: column;
-            }
-
-            .posts__arrow {
-                margin: var(--padding-small) auto;
-                display: block;
-            }
-        </style>
-        <script>
-            import "../scripts/background.ts";
-        </script>
     </body>
 </html>

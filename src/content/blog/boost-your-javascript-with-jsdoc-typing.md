@@ -5,7 +5,7 @@ date: 2023-04-08
 title: Boost Your JavaScript with JSDoc Typing
 author: samuel-braun
 cover: /assets/blog/boost-your-javascript-with-jsdoc-typing/cover.jpg
-canonical: https://dev.to/samuel-braun/boost-your-javascript-with-jsdoc-typing-3hb3
+devto: https://dev.to/samuel-braun/boost-your-javascript-with-jsdoc-typing-3hb3
 
 tags:
   - jsdoc

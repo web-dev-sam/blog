@@ -9,7 +9,7 @@ export const collections = {
             author: z.string(),
             cover: z.string(),
             tags: z.array(z.string()),
-            canonical: z.string().url().optional(),
+            devto: z.string().url(),
             share: z
                 .object({
                     image: z.string().url().optional(),
