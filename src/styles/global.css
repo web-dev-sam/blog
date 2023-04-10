@@ -46,6 +46,7 @@ body {
     font-family: Montserrat, sans-serif;
     color: var(--color-white);
     background: var(--web-bg);
+    text-align: center;
 }
 
 main {
@@ -144,6 +145,7 @@ pre {
     font-weight: 700;
     line-height: 2rem;
     vertical-align: middle;
+    text-align: left;
 }
 
 body,
@@ -284,4 +286,9 @@ body,
 .main-markdown-content :is(ul, ol) {
     list-style: disc;
     margin-left: 2.5rem;
+}
+
+/* FOOTER */
+footer {
+    text-transform: uppercase;
 }
