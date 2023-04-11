@@ -6,9 +6,9 @@ import Head from "../components/Head.astro";
 import { getCollection } from "astro:content";
 import Analytics from "../components/Analytics.astro";
 import Footer from "../components/Footer.astro";
-import ArrowDown from "../components/icons/ArrowDown.astro";
 
-const posts = await getCollection("blog");
+const unsortedPosts = await getCollection("blog");
+const posts = unsortedPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <html lang="en">
