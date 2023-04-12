@@ -9,12 +9,12 @@ import ArrowDown from "../components/icons/ArrowDown.astro";
 import Footer from "../components/Footer.astro";
 
 const posts = await getCollection("blog");
-const schema = {
+const schema = JSON.stringify({
     "@context": "https://schema.org/",
     "@type": "WebSite",
     name: "Webry",
     url: "https://www.webry.com/",
-};
+});
 ---
 
 <html lang="en">
