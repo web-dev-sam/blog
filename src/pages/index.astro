@@ -8,7 +8,8 @@ import Analytics from "../components/Analytics.astro";
 import ArrowDown from "../components/icons/ArrowDown.astro";
 import Footer from "../components/Footer.astro";
 
-const posts = await getCollection("blog");
+const unsortedPosts = await getCollection("blog");
+const posts = unsortedPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const schema = JSON.stringify({
     "@context": "https://schema.org/",
     "@type": "WebSite",
@@ -41,7 +42,7 @@ const schema = JSON.stringify({
             <div class="container">
                 <section class="posts">
                     <div class="posts_header">
-                        <h2 class="posts__title">Posts</h2>
+                        <h2 class="posts__title">POSTS</h2>
                         <div class="posts__arrow">
                             <ArrowDown />
                         </div>
@@ -57,20 +58,14 @@ const schema = JSON.stringify({
                                     />
                                     <div class="card__content flow-content">
                                         <h2 class="card-title">
-                                            Boost Your JavaScript with JSDoc
-                                            Typing
+                                            {post.data.title}
                                         </h2>
                                         <p class="card-description">
-                                            Explore my in-depth guide on
-                                            leveraging JSDoc to enhance your
-                                            JavaScript code with robust typing.
-                                            Boost code quality, maintainability,
-                                            and developer productivity with this
-                                            powerful tool.
+                                            {post.data.share.description}
                                         </p>
                                         <a
                                             class="btn card-button"
-                                            aria-label="Read more about Boost Your JavaScript with JSDoc Typing"
+                                            aria-label={`Go to the post: ${post.data.title}`}
                                             href={`/posts/${post.slug}`}
                                         >
                                             Read more

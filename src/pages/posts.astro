@@ -6,9 +6,9 @@ import Head from "../components/Head.astro";
 import { getCollection } from "astro:content";
 import Analytics from "../components/Analytics.astro";
 import Footer from "../components/Footer.astro";
-import ArrowDown from "../components/icons/ArrowDown.astro";
 
-const posts = await getCollection("blog");
+const unsortedPosts = await getCollection("blog");
+const posts = unsortedPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <html lang="en">
@@ -36,7 +36,7 @@ const posts = await getCollection("blog");
         <Navigation />
         <main class="container">
             <section class="flow-content-big">
-                <h1>Posts</h1>
+                <h1>POSTS</h1>
                 <section class="posts">
                     <div class="posts__grid">
                         {
@@ -50,16 +50,10 @@ const posts = await getCollection("blog");
                                     />
                                     <div class="card__content flow-content">
                                         <h2 class="card-title">
-                                            Boost Your JavaScript with JSDoc
-                                            Typing
+                                            {post.data.title}
                                         </h2>
                                         <p class="card-description">
-                                            Explore my in-depth guide on
-                                            leveraging JSDoc to enhance your
-                                            JavaScript code with robust typing.
-                                            Boost code quality, maintainability,
-                                            and developer productivity with this
-                                            powerful tool.
+                                            {post.data.share.description}
                                         </p>
                                         <a
                                             class="btn card-button"
