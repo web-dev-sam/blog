@@ -28,35 +28,35 @@ When you find yourself struggling to name a specific variable, function, or clas
 
 1. **Scope:**
     - What is the visibility or accessibility of this variable? 
-    *(e.g., private, public, protected, internal, package-private)*
+    <br>(e.g., private, public, protected, internal, package-private)
     - Is this variable specific to any programming language features or conventions?
-    *(e.g., double underscore prefix in Python, dollar sign in jQuery, '@' for instance variables in Ruby)*
+    <br>(e.g., double underscore prefix in Python, dollar sign in jQuery, '@' for instance variables in Ruby)
     - Is this variable part of a framework or library that requires a specific naming pattern?
-    *(e.g., Angular's 'ng' prefix for directives, React's 'use' prefix for hooks)*
+    <br>(e.g., Angular's 'ng' prefix for directives, React's 'use' prefix for hooks)
 2. **TypePrefix:**
     - Is this variable a boolean or a function that returns a boolean?
-    *(e.g., is, has, contains, are, integrates)*
+    <br>(e.g., is, has, contains, are, integrates)
     - Does the variable represent a state, condition, or action that can be described with words like "is," "has," "contains," or "integrates"?
-    *(e.g., isEnabled, hasAccess, containsItem)*
+    <br>(e.g., isEnabled, hasAccess, containsItem)
     - Is this a function responsible for getting, setting, fetching, or updating data?
-    *(e.g., get, set, fetch, update, retrieve, store, save)*
+    <br>(e.g., get, set, fetch, update, retrieve, store, save)
 3. **BaseName:**
     - What is the primary purpose of this variable?
-    *(e.g., user, distance, payment, errorMessage)*
+    <br>(e.g., user, distance, payment, errorMessage)
     - Can I describe the variable's role in the code with a clear, concise word or phrase?
-    *(e.g., registrationStatus, totalPrice, elapsedTime)*
+    <br>(e.g., registrationStatus, totalPrice, elapsedTime)
 4. **Qualifier:**
     - Are there any additional details or context that would help distinguish this variable from others with a similar purpose?
-    *(e.g., firstName, lastName, phoneNumber)*
+    <br>(e.g., firstName, lastName, phoneNumber)
     - Does the variable have specific units or properties that should be included in the name, such as "InMeters" or "InSeconds"?
-    *(e.g., distanceInMiles, timeInSeconds)*
+    <br>(e.g., distanceInMiles, timeInSeconds)
     - Is there a specific state or condition that this variable represents, such as "Valid" or "Removable"?
-    *(e.g., isValidEmail, isRemovableItem)*
+    <br>(e.g., isValidEmail, isRemovableItem)
 5. **TypeSuffix:**
     - What is the fundamental purpose or structure of this variable?
-    *(e.g., Count, Index, Sum, Average, List, Map, Array, Set, Queue)*
+    <br>(e.g., Count, Index, Sum, Average, List, Map, Array, Set, Queue)
     - Can the variable's role be clarified by adding a suffix for the structure like "Count," "Index," "Sum," "Average," "List," or "Map"?
-    *(e.g., itemCount, currentIndex, totalPriceSum, ratingAverage, userList, settingsMap)*
+    <br>(e.g., itemCount, currentIndex, totalPriceSum, ratingAverage, userList, settingsMap)
 
 Here are 6 examples:
 
@@ -100,13 +100,9 @@ You might have heard the advice to scatter comments throughout your code to make
 
 ![fail](/assets/blog/naming-every-developers-nightmare/fail.gif)
 
-Consider this: if your code is incomprehensible without comments, then the problem isn't a lack of comments. And if your code is already clear, then you don't need the comments in the first place.
+Consider this: if your code is incomprehensible without comments, then the problem isn't a lack of comments. And if your code is already clear, then you don't need the comments in the first place. So, what's the point I'm trying to make? Use variables as comments.
 
-So, what's the point I'm trying to make? Use variables as comments.
-
-When you store everything in a variable with a meaningful name, you can often understand the entire code just by reading those names and key control structures like if statements. Let me show you an example:
-
-The other day, I came across a piece of code that took me about 10 minutes to grasp completely.
+When you store everything in a variable with a meaningful name, you can often understand the entire code just by reading those names and key control structures like if statements. Let me show you an example. The other day, I came across a piece of code that took me about 10 minutes to grasp completely:
 
 ```js
 if (!row.doc[otherField]) {
