@@ -10,12 +10,12 @@ import Footer from "../components/Footer.astro";
 
 const unsortedPosts = await getCollection("blog");
 const posts = unsortedPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-const schema = {
+const schema = JSON.stringify({
     "@context": "https://schema.org/",
     "@type": "WebSite",
     name: "Webry",
     url: "https://www.webry.com/",
-};
+});
 ---
 
 <html lang="en">
