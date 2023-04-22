@@ -1,6 +1,6 @@
 ---
 date: 2023-04-18
-moddate: 2021-04-18
+moddate: 2021-04-22
 title: Naming! Every Developer's Nightmare
 author: samuel-braun
 cover: /assets/blog/naming-every-developers-nightmare/cover.jpg
@@ -18,7 +18,7 @@ share:
   description: >
     Improve your code's readability with my guide on variable naming. Explore a powerful naming pattern to create self-explanatory and maintainable code, enhancing your programming experience and productivity.
 ---
-Aah.. naming things. A developer's favorite brain sport, nestled somewhere between attending endless meetings and refactoring code. As developers, we know that naming can be both a blessing and a curse. It's a critical part of our work, but it can lead to some hilarious but most likely frustrating names. In this post, I'll show a way we can think of variables and how you can use them effectively. Even if you feel confident naming your variables, are you also using their full potential? 🤔
+Aah.. naming things. A developer's favorite brain sport, nestled somewhere between attending endless meetings and refactoring code. As developers, we know that can be both a blessing and a curse. It's a critical part of our work, but it can lead to some hilarious but most likely frustrating names. In this post, I'll show a way we can think of variables and how you can use them effectively. Even if you feel confident naming your variables, are you also using their full potential? 🤔
 
 ![jeff.gif](/assets/blog/naming-every-developers-nightmare/jeff.gif)
 
@@ -144,7 +144,7 @@ const isCurrentFieldOnRight = currentField === "right";
 
 const startsWithMinusSign = (str) => str.charAt(0) === "-";
 const removeMinusFromZero = (str) => str === "-0" ? "0" : str;
-const addMinusAtStart = (str) => startsWithMinusSign(str) ? str : `-${str}`;
+const ensureMinusAtStart = (str) => startsWithMinusSign(str) ? str : `-${str}`;
 const removeMinusFromStart = (str) => str.replace(/^-/, "");
 
 if (!valueOfOtherField) {
@@ -156,7 +156,7 @@ if (!valueOfOtherField) {
 	} else if (isCurrentFieldOnRight) {
 		val = startsWithMinusSign(valueOfCurrentField) ? 
 			valueOfCurrentField : 
-			addMinusAtStart(valueOfCurrentField);
+			ensureMinusAtStart(valueOfCurrentField);
 	}
 
 	row.doc[otherField] = removeMinusFromZero(val);
@@ -164,7 +164,7 @@ if (!valueOfOtherField) {
 }
 
 if (isCurrentFieldOnLeft && valueOfLeftField && !startsWithMinusSign(valueOfLeftField)) {
-	row.doc["left"] = removeMinusFromZero(addMinusAtStart(valueOfLeftField));
+	row.doc["left"] = removeMinusFromZero(ensureMinusAtStart(valueOfLeftField));
 	row.refreshField("left");
 }
 
@@ -179,13 +179,13 @@ With this change, the code reads almost like plain English. However, upon closer
 ```js
 val = startsWithMinusSign(valueOfCurrentField) ? 
 			valueOfCurrentField : 
-			addMinusAtStart(valueOfCurrentField);
+			ensureMinusAtStart(valueOfCurrentField);
 ```
 
 Logically, it can be further simplified. If the value starts with a minus sign, we keep it; otherwise, we add a new minus sign. Essentially, this means we can simply add a minus sign at the beginning. So, the line can be simplified to:
 
 ```js
-val = addMinusAtStart(valueOfCurrentField);
+val = ensureMinusAtStart(valueOfCurrentField);
 ```
 
 Assuming the performance of `row.refreshField` is negligible, the same logic can be applied to the if statements by removing the `&& startsWithMinusSign(valueOfRightField)` and `&& !startsWithMinusSign(valueOfLeftField)` conditions. The entire code should now look like this:
@@ -200,7 +200,7 @@ const isCurrentFieldOnRight = currentField === "right";
 
 const startsWithMinusSign = (str) => str.charAt(0) === "-";
 const removeMinusFromZero = (str) => str === "-0" ? "0" : str;
-const addMinusAtStart = (str) => removeMinusFromZero(
+const ensureMinusAtStart = (str) => removeMinusFromZero(
 	startsWithMinusSign(str) ? str : `-${str}`
 );
 const removeMinusFromStart = (str) => str.replace(/^-/, "");
@@ -212,7 +212,7 @@ if (!valueOfOtherField) {
   // other field. (NOTE: In the original code there were exactly two fields, left and right.)
 	const newValue = isCurrentFieldOnLeft ?
 		removeMinusFromStart(valueOfCurrentField) :
-		addMinusAtStart(valueOfCurrentField);
+		ensureMinusAtStart(valueOfCurrentField);
 
 	row.doc[otherField] = newValue;
 	row.refreshField(otherField);
@@ -221,7 +221,7 @@ if (!valueOfOtherField) {
 // If the current field is the left one and there is an inputted value then
 // make sure to add the minus at the start
 if (isCurrentFieldOnLeft && valueOfLeftField) {
-	row.doc["left"] = addMinusAtStart(valueOfLeftField);
+	row.doc["left"] = ensureMinusAtStart(valueOfLeftField);
 	row.refreshField("left");
 }
 
