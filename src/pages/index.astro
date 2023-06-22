@@ -7,6 +7,7 @@ import Head from "../components/Head.astro";
 import Analytics from "../components/Analytics.astro";
 import ArrowDown from "../components/icons/ArrowDown.astro";
 import Footer from "../components/Footer.astro";
+import LandingBackground from "../components/assets/LandingBackground.astro";
 
 const unsortedPosts = await getCollection("blog");
 const posts = unsortedPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
@@ -39,6 +40,7 @@ const schema = JSON.stringify({
             </h1>
         </section>
         <main>
+            <LandingBackground />
             <div class="container">
                 <section class="posts">
                     <div class="posts_header">
@@ -51,14 +53,24 @@ const schema = JSON.stringify({
                         {
                             posts.map((post) => (
                                 <article class="card">
-                                    <img
-                                        src={post.data.cover}
-                                        alt="JSDoc Typing"
-                                        class="card-img"
-                                    />
+                                    <a
+                                        aria-label={`Go to the post: ${post.data.title}`}
+                                        href={`/posts/${post.slug}`}
+                                    >
+                                        <img
+                                            src={post.data.cover}
+                                            alt="JSDoc Typing"
+                                            class="card-img"
+                                        />
+                                    </a>
                                     <div class="card__content flow-content">
                                         <h2 class="card-title">
-                                            {post.data.title}
+                                            <a
+                                                aria-label={`Go to the post: ${post.data.title}`}
+                                                href={`/posts/${post.slug}`}
+                                            >
+                                                {post.data.title}
+                                            </a>
                                         </h2>
                                         <p class="card-description">
                                             {post.data.share.description}
@@ -90,14 +102,26 @@ const schema = JSON.stringify({
                 text-transform: uppercase;
                 text-align: center;
                 height: calc(100vh - var(--header-height) * 2);
+                background: url("/assets/hero-background-mobile.svg") no-repeat center bottom;
+                background-size: cover;
+                color: var(--color-white);
             }
 
             .hero h1 {
+                transform: translateY(-10vh);
             }
 
-            @media (min-width: 768px) {
-                .hero h1 {
-                    transform: translateY(calc(-0.5 * var(--header-height)));
+            @media (min-width: 1080px) {
+                .hero {
+                    --clip-path-size-factor: 2; 
+                    background: url("/assets/hero-background.svg") no-repeat center center;
+                    background-size: cover;
+                }
+            }
+            
+            @media (min-width: 1440px) {
+                .hero {
+                    --clip-path-size-factor: 2.5; 
                 }
             }
 
@@ -111,6 +135,7 @@ const schema = JSON.stringify({
                 height: var(--header-height);
                 display: flex;
                 flex-direction: column;
+                transform: translateY(-3vh);
             }
 
             .posts__arrow {

@@ -1,23 +1,28 @@
 :root {
-    --color-primary: #F5A814;
-    --color-dark-primary: #1e1e1e;
-    --color-dark-secondary: #353535;
+    --color-primary-pink: #fd5596;
+    --color-primary-orange: #fc7d80;
+    --color-primary-gradient: linear-gradient(95deg, var(--color-primary-pink) 10%, var(--color-primary-orange) 45%);
+    --color-dark-primary: #0e0e0e;
+    --color-dark-secondary: #212121;
+    --color-light-primary: #fff;
+    --color-light-secondary: #eeeeee;
     --color-primary-2: #378fe9;
     --color-text-green: #4ba716;
     --color-green: #5cca1c;
     --color-lime: #b9f107;
     --color-red: #ca3f1c;
-    --color-black: #1e1e1e;
+    --color-black: var(--color-dark-primary);
     --color-white: #fff;
     --color-gray: #555;
     --color-light-gray: #e0e0e080;
 
-    --web-bg: var(--color-black);
+    --color-border: var(--color-dark-secondary);
+    --web-bg: var(--color-white);
+    --hero-bg: var(--color-black);
     --padding-big: 3rem;
     --padding-small: 1rem;
     --flow-content-small: 1rem;
     --flow-content-big: 3rem;
-    --padding-body: var(--padding-big);
     --header-height: 8rem;
     --border-radius: 0.5rem;
 
@@ -41,10 +46,10 @@
 
 body {
     margin: 0;
-    padding: 0 var(--padding-body);
+    font-family: Outfit, sans-serif;
+    font-weight: 300;
     line-height: 2;
-    font-family: Montserrat, sans-serif;
-    color: var(--color-white);
+    color: var(--color-black);
     background: var(--web-bg);
     text-align: center;
 }
@@ -60,7 +65,11 @@ img {
 
 em {
     font-style: normal;
-    color: var(--color-primary);
+    background: var(--color-primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
 }
 
 a {
@@ -224,7 +233,7 @@ body,
 }
 
 .card {
-    background: var(--color-dark-secondary);
+    background: var(--color-light-secondary);
     border-radius: var(--border-radius);
     display: flex;
     flex-direction: column;
@@ -242,13 +251,9 @@ body,
 }
 
 .card-title {
-    font-size: 20px;
+    font-size: var(--h4-font-size);
     font-weight: bold;
     text-transform: uppercase;
-}
-
-.card-description {
-    font-size: 14px;
 }
 
 .card-button {
