@@ -11,10 +11,10 @@ import Analytics from "../../components/Analytics.astro";
 import Footer from "../../components/Footer.astro";
 
 export async function getStaticPaths() {
-    const posts = await getCollection("blog");
+    const articles = await getCollection("blog");
     const authors = await getCollection("author");
 
-    return posts.map((post) => {
+    return articles.map((post) => {
         return {
             params: {
                 slug: post.slug,
@@ -40,7 +40,7 @@ const schema = JSON.stringify({
     "@type": "BlogPosting",
     mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": "https://www.webry.com/posts/" + post.slug,
+        "@id": "https://www.webry.com/article/" + post.slug,
     },
     headline: post.data.title,
     description: post.data.share.description,
@@ -62,6 +62,8 @@ const schema = JSON.stringify({
     dateModified: post.data.moddate.toISOString(),
 });
 const { Content } = await post.render();
+
+// TODO: Future me, https://dev.to/api/articles/148356
 ---
 
 <html lang="en">
@@ -169,6 +171,7 @@ const { Content } = await post.render();
                 margin: 0 auto;
                 margin-top: 5vh;
                 border-radius: 0.5rem;
+                padding: 0 3rem;
             }
 
             .cover {

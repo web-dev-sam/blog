@@ -128,7 +128,7 @@ ul+pre {
 }
 
 :not(pre)>code {
-    background-color: var(--color-dark-secondary);
+    background-color: var(--color-light-secondary);
     padding: 0.25rem 0.5rem;
     margin: 2px;
     border-radius: 0.25rem;
@@ -215,16 +215,16 @@ body,
 
 /* BLOGS */
 
-.posts {
+.articles {
     text-align: center;
 }
 
-.posts__title {
+.articles__title {
     text-transform: uppercase;
     font-size: var(--h4-font-size);
 }
 
-.posts__grid {
+.articles__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
     justify-content: center;

@@ -9,8 +9,8 @@ import ArrowDown from "../components/icons/ArrowDown.astro";
 import Footer from "../components/Footer.astro";
 import LandingBackground from "../components/assets/LandingBackground.astro";
 
-const unsortedPosts = await getCollection("blog");
-const posts = unsortedPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const unsortedarticles = await getCollection("blog");
+const articles = unsortedarticles.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const schema = JSON.stringify({
     "@context": "https://schema.org/",
     "@type": "WebSite",
@@ -36,26 +36,26 @@ const schema = JSON.stringify({
         <section class="hero">
             <h1>
                 <span class="hero__before">Welcome to</span>
-                <span>The <em>Modern</em> Web Blog</span>
+                <span>My <em>Modern</em> Web Blog</span>
             </h1>
         </section>
         <main>
             <LandingBackground />
             <div class="container">
-                <section class="posts">
-                    <div class="posts_header">
-                        <h2 class="posts__title">POSTS</h2>
-                        <div class="posts__arrow">
+                <section class="articles">
+                    <div class="articles_header">
+                        <h2 class="articles__title">articles</h2>
+                        <div class="articles__arrow">
                             <ArrowDown />
                         </div>
                     </div>
-                    <div class="posts__grid">
+                    <div class="articles__grid">
                         {
-                            posts.map((post) => (
+                            articles.map((post) => (
                                 <article class="card">
                                     <a
                                         aria-label={`Go to the post: ${post.data.title}`}
-                                        href={`/posts/${post.slug}`}
+                                        href={`/article/${post.slug}`}
                                     >
                                         <img
                                             src={post.data.cover}
@@ -67,7 +67,7 @@ const schema = JSON.stringify({
                                         <h2 class="card-title">
                                             <a
                                                 aria-label={`Go to the post: ${post.data.title}`}
-                                                href={`/posts/${post.slug}`}
+                                                href={`/article/${post.slug}`}
                                             >
                                                 {post.data.title}
                                             </a>
@@ -78,7 +78,7 @@ const schema = JSON.stringify({
                                         <a
                                             class="btn card-button"
                                             aria-label={`Go to the post: ${post.data.title}`}
-                                            href={`/posts/${post.slug}`}
+                                            href={`/article/${post.slug}`}
                                         >
                                             Read more
                                         </a>
@@ -131,14 +131,14 @@ const schema = JSON.stringify({
                 color: var(--color-gray-500);
             }
 
-            .posts_header {
+            .articles_header {
                 height: var(--header-height);
                 display: flex;
                 flex-direction: column;
                 transform: translateY(-3vh);
             }
 
-            .posts__arrow {
+            .articles__arrow {
                 margin: var(--padding-small) auto;
                 display: block;
             }
