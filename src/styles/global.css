@@ -5,7 +5,8 @@
     --color-dark-primary: #0e0e0e;
     --color-dark-secondary: #212121;
     --color-light-primary: #fff;
-    --color-light-secondary: #eeeeee;
+    --color-light-secondary: #eee;
+    --color-light-triary: #ccc;
     --color-primary-2: #378fe9;
     --color-text-green: #4ba716;
     --color-green: #5cca1c;
@@ -16,6 +17,48 @@
     --color-gray: #555;
     --color-light-gray: #e0e0e080;
 
+    /* BRAND COLORS */
+    --color-angular: #dd0031;
+    --color-react: #61dafb;
+    --color-vue: #41b883;
+    --color-svelte: #ff3e00;
+    --color-nextjs: #000000;
+    --color-gatsby: #663399;
+    --color-nuxtjs: #00c58e;
+    --color-sapper: #ff3e00;
+    --color-ember: #e04e39;
+    --color-ionic: #3880ff;
+    --color-flutter: #02569b;
+    --color-graphql: #e10098;
+    --color-javascript: #efd81d;
+    --color-typescript: #007acc;
+    --color-ruby: #cc342d;
+    --color-rails: #cc0000;
+    --color-php: #777bb3;
+    --color-laravel: #ff2d20;
+    --color-python: #3776ab;
+    --color-django: #092e20;
+    --color-java: #007396;
+    --color-spring: #6db33f;
+    --color-csharp: #239120;
+    --color-dotnet: #5c2d91;
+    --color-go: #00add8;
+    --color-rust: #000000;
+    --color-swift: #ffac45;
+    --color-sass: #cc6699;
+    --color-less: #1d365d;
+    --color-stylus: #ff6347;
+    --color-bootstrap: #563d7c;
+    --color-tailwind: #38b2ac;
+    --color-astro: #4c257c;
+    --color-apollo: #3c2e4f;
+    --color-aws: #232f3e;
+    --color-azure: #0089d6;
+    --color-docker: #2496ed;
+    --color-figma: #f24e1e;
+    --color-gmail: #d14836;
+    --color-linkedin: #0077b5;
+    
     --color-border: var(--color-dark-secondary);
     --web-bg: var(--color-white);
     --hero-bg: var(--color-black);
@@ -48,7 +91,7 @@ body {
     margin: 0;
     font-family: Outfit, sans-serif;
     font-weight: 300;
-    line-height: 2;
+    line-height: 1.75rem;
     color: var(--color-black);
     background: var(--web-bg);
     text-align: center;
@@ -117,7 +160,6 @@ p:has(img) {
     text-align: center;
 }
 
-
 p img {
     border-radius: 0.5rem;
     margin: 1.5rem auto;
@@ -152,7 +194,7 @@ pre {
 .text-heading {
     font-size: 2rem;
     font-weight: 700;
-    line-height: 2rem;
+    line-height: 1.75rem;
     vertical-align: middle;
     text-align: left;
 }
@@ -167,6 +209,10 @@ body,
     font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
+}
+
+.text-primary {
+    color: var(--color-gray);
 }
 
 .flex-spacer {
