@@ -24,13 +24,18 @@
                 </a>
             </li>
             <li class="flex-spacer"></li>
-            <li><a href="/posts/">Posts</a></li>
-            <li><a href="/about/">About</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/about/">Who am i</a></li>
         </ul>
     </nav>
 </div>
 
 <style>
+    .navigation {
+        background: var(--hero-bg);
+        color: var(--color-white);
+    }
+
     .nav-header {
         display: flex;
         align-items: center;
@@ -38,6 +43,7 @@
         text-transform: uppercase;
         gap: var(--padding-big);
         height: var(--header-height);
+        margin: 0 3rem;
     }
 
     .nav-header__logo {

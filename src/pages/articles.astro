@@ -1,0 +1,75 @@
+---
+import "../styles/global.css";
+
+import Navigation from "../components/Navigation.astro";
+import Head from "../components/Head.astro";
+import { getCollection } from "astro:content";
+import Analytics from "../components/Analytics.astro";
+import Footer from "../components/Footer.astro";
+
+const unsortedarticles = await getCollection("blog");
+const articles = unsortedarticles.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<html lang="en">
+    <head>
+        <Head />
+        <title>Webry's articles</title>
+        <meta
+            name="description"
+            content="Discover Webry's latest articles on web development, JavaScript, and more."
+        />
+        <link rel="canonical" href="https://www.webry.com/articles/" />
+        <Analytics />
+
+        <style>
+            body {
+                text-align: center;
+            }
+
+            main {
+                margin-top: 6rem;
+            }
+        </style>
+    </head>
+    <body>
+        <Navigation />
+        <main class="container">
+            <section class="flow-content-big">
+                <h1>All Articles</h1>
+                <section class="articles">
+                    <div class="articles__grid">
+                        {
+                            articles.map((post) => (
+                                <article class="card" itemtype="http://schema.org/BlogPosting">
+                                    <img
+                                        src={post.data.cover}
+                                        alt="JSDoc Typing"
+                                        class="card-img"
+                                        itemprop="image"
+                                    />
+                                    <div class="card__content flow-content">
+                                        <h2 class="card-title">
+                                            {post.data.title}
+                                        </h2>
+                                        <p class="card-description">
+                                            {post.data.share.description}
+                                        </p>
+                                        <a
+                                            class="btn card-button"
+                                            aria-label="Read more about Boost Your JavaScript with JSDoc Typing"
+                                            href={`/article/${post.slug}`}
+                                        >
+                                            Read more
+                                        </a>
+                                    </div>
+                                </article>
+                            ))
+                        }
+                    </div>
+                </section>
+            </section>
+        </main>
+        <Footer />
+    </body>
+</html>

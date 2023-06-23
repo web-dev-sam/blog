@@ -240,6 +240,6 @@ At this point, we can easily read through the code without tearing our hair out.
 
 Understanding this behavior with the original code would have been quite challenging. However, by using variables more effectively, we can abstract away the complicated syntax mess and make the code read more naturally.
 
-Let me know what you think in the comments. Maybe you have some more suggestions. If you found this post helpful, consider liking it and following for more posts in the future. Your support means a lot and encourages me to keep sharing more ❤. Happy coding!
+Let me know what you think in the comments. Maybe you have some more suggestions. If you found this post helpful, consider liking it and following for more articles in the future. Your support means a lot and encourages me to keep sharing more ❤. Happy coding!
 
 ![jeff.gif](/assets/blog/naming-every-developers-nightmare/properly-named-jeff.gif)

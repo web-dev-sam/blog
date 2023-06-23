@@ -3,7 +3,7 @@ import "../styles/global.css";
 
 import Navigation from "../components/Navigation.astro";
 import Head from "../components/Head.astro";
-import { CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 import DevToIcon from "../components/icons/DevToIcon.astro";
 import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
 import Analytics from "../components/Analytics.astro";
@@ -11,6 +11,28 @@ import Footer from "../components/Footer.astro";
 
 const authors = await getCollection("author");
 const author = authors.find((author) => author.slug === "samuel-braun")!;
+const projects = [
+    {
+        name: "Webry",
+        description:
+            "Webry is a project I started to share my knowledge and experience as well as tools I build. Its all about the modern web. This is a place where I can share my thoughts and ideas with the world. More content will be added soon.",
+        link: "https://www.webry.com",
+        image: "/assets/projects/webry.svg",
+        skills: ["astro", "typescript", "javascript", "css", "seo"],
+        repo: "https://github.com/MindLaborDev/blog",
+        repoType: "GitHub",
+    },
+    {
+        name: "Frac",
+        description:
+            "A Web Application that renders the Mandelbrot using GPU power with three.js and Angular. This was one of my first projects that went through many iterations. This is the current most recent version.",
+        link: "https://frac.webry.com",
+        image: "/assets/projects/frac.png",
+        skills: ["angular", "typescript", "javascript", "glsl", "scss", "html"],
+        repo: "https://github.com/MindLaborDev/Frac",
+        repoType: "GitHub",
+    },
+];
 ---
 
 <html lang="en">
@@ -24,54 +46,920 @@ const author = authors.find((author) => author.slug === "samuel-braun")!;
         <Analytics />
 
         <link rel="canonical" href="https://www.webry.com/about/" />
+    </head>
+    <body>
+        <Navigation />
+        <main class="container">
+            <section class="flow-content-big">
+                <div class="hero">
+                    <div class="hero__desc flow-content-big">
+                        <h1>Hey, I'm Samuel Braun</h1>
+                        <img
+                            class="avatar mobile-img"
+                            src="/assets/author/pfp/samuel-braun.jpg"
+                        />
+                        <p>
+                            Webry is a project I started to share my knowledge
+                            and experience as well as tools I build. Its all
+                            about the modern web. This is a place where I can
+                            share my thoughts and ideas with the world. More
+                            content will be added soon. You can follow my
+                            journey on LinkedIn and Dev.to:
+                        </p>
+                        <div class="socials">
+                            <a
+                                href={author.data.devto}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="socials__devto"
+                                aria-label="Visit Samuel Braun's Dev.to profile"
+                                title="Visit Samuel Braun's Dev.to profile"
+                            >
+                                <DevToIcon />
+                            </a>
+                            <a
+                                href={author.data.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="socials__linkedin"
+                                aria-label="Visit Samuel Braun's LinkedIn profile"
+                                title="Visit Samuel Braun's LinkedIn profile"
+                            >
+                                <LinkedInIcon />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="avatar-flex-item">
+                        <img
+                            class="avatar desktop-img"
+                            src="/assets/author/pfp/samuel-braun.jpg"
+                        />
+                    </div>
+                </div>
+            </section>
+        </main>
+        <section class="container">
+            <div class="experience text-left flow-content-big">
+                <h2>Experience</h2>
+                <div class="flow-content-big">
+                    <div class="exp__point exp__point--normal flow-content">
+                        <div>
+                            <h3>School</h3>
+                            <p class="text-primary">2018 - 2020</p>
+                            <p class="text-primary">
+                                General qualification for university entrance
+                            </p>
+                        </div>
+                        <p>
+                            Hey there! 👋 Let me take you back to my school
+                            days, where my journey with programming began. The
+                            first language I got my hands on was Java. Truth be
+                            told, it didn't click immediately, but as the fog of
+                            confusion started lifting, I began to see the
+                            limitless possibilities that come with programming.
+                            It felt like unlocking a new level in a game.
+                        </p>
+                        <p>
+                            My initial projects were humble - starting with a
+                            simple calculator. But you know how it goes, once
+                            the ball starts rolling, there's no stopping. My
+                            ambitions grew and led me to create a Mandelbrot set
+                            generator before my Java class even ended. It's
+                            essentially a mathematical formula that creates
+                            visually captivating images, combining the beauty of
+                            mathematics with art.
+                        </p>
+                        <p>
+                            You can take a peek at the refined version <a
+                                href="https://frac.webry.com/"
+                                target="_blank"
+                                rel="noopener noreferrer">here</a
+                            >. It's a testament to how one can continually grow
+                            and innovate. I hope it inspires you as much as it
+                            did me. 🚀
+                        </p>
+                    </div>
+                    <div class="exp__point exp__point--normal flow-content">
+                        <div>
+                            <h3>Voluntary Work</h3>
+                            <p class="text-primary">2019 - 2021</p>
+                            <p class="text-primary">
+                                Teaching kids how to code
+                            </p>
+                        </div>
+                        <p>
+                            Let's switch gears and talk about a venture close to
+                            my heart: CodeClubMG. 🌟 This incredible association
+                            paves the way for the young tech enthusiasts,
+                            opening the coding realm to kids aged 11 and up.
+                            When I stumbled upon CodeClubMG, I felt an instant
+                            connection. It was an opportunity to not just grow
+                            as a developer but to give back, sharing my
+                            learnings and projects.
+                        </p>
+                        <p>
+                            <i>Now, here's where the adventure kicks in:</i> My first
+                            mission was to develop an iOS mobile app for CodeClubMG.
+                            The catch? I had zero experience in iOS development!
+                            But, never one to back down, I dived headfirst into Swift
+                            and managed to build a fully functional app. That was
+                            not just an achievement; it was a milestone that opened
+                            doors for me within CodeClubMG.
+                        </p>
+                        <p>
+                            As I integrated features into the app, I evolved
+                            from being a participant to taking on the mantle of
+                            a mentor, guiding developers through the mystique of
+                            iOS development. 🍏
+                        </p>
+                        <p>
+                            But wait, there's more! Next on my project list was
+                            spicing up the CodeClubMG website with a custom
+                            coding challenges platform. I loved every moment of
+                            this project, collaborating with fellow developers
+                            and enriching my web development skills.
+                        </p>
+                        <p>
+                            My last project at CodeClubMG was contributing to
+                            the reconstruction and redesign of their learning
+                            platform. This revamp was particularly crucial
+                            during the COVID-19 pandemic, as it provided a
+                            simple way for teachers to interact with their
+                            students remotely. 🖥️
+                        </p>
+                        <p>
+                            Through these projects, not only did I grow as a
+                            developer but also realized the sheer joy in
+                            fostering a nurturing environment for the next
+                            generation of coders.
+                        </p>
+                        <p>
+                            Now, let's talk about the cherry on top. 🍒 As a
+                            testament to the effort and dedication I poured into
+                            these projects, I was presented with an exciting
+                            opportunity. I was offered a paid position as a web
+                            developer at imat-uve gmbh! imat-uve is an
+                            innovative automotive validation and consulting
+                            company here in Germany.
+                        </p>
+                        <p>
+                            This was a turning point in my journey. Stepping
+                            into the professional world with a company was the
+                            kind of validation that all those late nights and
+                            endless lines of code were building towards. It was
+                            an affirmation that when passion meets perseverance,
+                            remarkable things happen. 🚀
+                        </p>
+                    </div>
+                    <div class="exp__point exp__point--normal flow-content">
+                        <div>
+                            <h3>Work at imat-uve</h3>
+                            <p class="text-primary">2019 - now</p>
+                            <p class="text-primary">
+                                Working as a web developer
+                            </p>
+                        </div>
+                        <p>
+                            At imat-uve, I'm thrilled to be part of a dynamic
+                            team that's crafting an ERP system aimed at
+                            innovating and transforming automotive validation
+                            processes. Essentially, we're building tech that
+                            makes automotive material testing smarter and more
+                            efficient.
+                        </p>
+                        <p>
+                            My role is pretty diverse; I get to work on both the
+                            frontend and backend of the application. Plus, I'm
+                            one who keeps an eye on the existing features,
+                            ensuring they're running smoothly and are updated to
+                            keep pace with changing needs. A key focus is
+                            ensuring the system is future-proof allowing for
+                            scalability and growth. 💪
+                        </p>
+                        <p>
+                            One of the cool parts of being on this team is how
+                            much I've learned. We work using agile methodologies
+                            like Scrum which taught me a ton about effective
+                            teamwork. I've also learned how to build large-scale
+                            applications and how to write code that's clean and
+                            easy to work with.
+                        </p>
+                        <p>
+                            So, it's been an awesome blend of building,
+                            learning, and growing. And it feels great to be part
+                            of something big that can make a difference in the
+                            automotive world. 🚀
+                        </p>
+                    </div>
+                    <div class="exp__point exp__point--normal flow-content">
+                        <div>
+                            <h3>Personal Development & Growth</h3>
+                            <p class="text-primary">2020 - 2021</p>
+                            <p class="text-primary">
+                                Working on personal projects & courses
+                            </p>
+                        </div>
+                        <p>
+                            When school days came to an end, I decided to hit
+                            the pause button before jumping into the next big
+                            thing. I took a gap year - but, oh boy, it was
+                            anything but a break! I set out to sharpen my
+                            skills, dive into personal projects, and basically
+                            become a web development ninja. 🥋
+                        </p>
+                        <p>
+                            During this time, I worked on an array of projects.
+                            One that's particularly dear to me is the revamped
+                            version of my Mandelbrot set explorer (remember, the
+                            cool math-to-art one?). This time, I used Angular
+                            and gave it a superpower with WebGL (thanks to
+                            three.js) for rendering. The result? A whopping
+                            1000x speed boost, making it a real-time explorer.
+                            🚀
+                        </p>
+                        <p>
+                            But wait, my coding marathon didn't stop there. I
+                            built a custom markdown CMS, a music streaming bot
+                            for Discord, and a chatbot with a dash of AI magic
+                            from GPT-3. The rhythm game enthusiasts were not
+                            forgotten - I crafted web apps, Chrome extensions,
+                            and Twitch extensions centered around Beat Saber,
+                            the popular VR rhythm game.
+                        </p>
+                        <p>
+                            Of course, you can't sharpen your skills without
+                            some knowledge infusion. I enrolled in courses like
+                            "CS50: Introduction to Artificial Intelligence with
+                            Python" and "CS50: Introduction to Computer Science"
+                            from HarvardX. I also cracked open the mysteries of
+                            CSS with Kevin Powell's "CSS Demystified" and
+                            refined my design prowess with Supercharge's
+                            "Advanced Figma Course".
+                        </p>
+                        <p>
+                            And cherry on top - I earned the "Professional Scrum
+                            Master I" and "Professional Scrum Product Owner I"
+                            certifications from Scrum.org. 📜
+                        </p>
+                        <p>
+                            It doesn't end, though - I'm still coding, learning,
+                            and building. Curious to see what I've been up to?
+                            You can find most of my projects on my <a
+                                href="https://github.com/MindLaborDev"
+                                target="_blank"
+                                rel="noopener noreferrer">GitHub</a
+                            > and <a
+                                href="https://bitbucket.org/samuel-braun/workspace/projects/"
+                                target="_blank"
+                                rel="noopener noreferrer">Bitbucket</a
+                            >.
+                        </p>
+                        <p>
+                            So here I am, a year richer in experience and
+                            knowledge, and ever excited about what's next in
+                            this fantastic journey. 🌟
+                        </p>
+                    </div>
+                    <div class="exp__point exp__point--normal flow-content">
+                        <div>
+                            <h3>Bachelor's degree</h3>
+                            <p class="text-primary">2021 - 2024</p>
+                            <p class="text-primary">
+                                Studying Media Computer Science
+                            </p>
+                        </div>
+                        <p>
+                            Now, let's talk about my quest for higher education.
+                            I initially set sail at Heinrich Heine University in
+                            Düsseldorf, pursuing a computer science bachelor's
+                            degree. However, I quickly realized my heart yearned
+                            for something more practical, something that would
+                            let me dive hands-on into the world of web
+                            development.
+                        </p>
+                        <p>
+                            So, I made a switch! I moved to IU International
+                            University of Applied Sciences and enrolled in the
+                            bachelor's program for media computer science. This
+                            was the perfect match! It's super hands-on, web
+                            development-centric, and gives me that “Aha! This is
+                            actually useful!” feeling when I learn. I'm
+                            currently in the 4th semester out of 6, and let me
+                            tell you, it's been quite the ride.
+                        </p>
+                        <p>
+                            Here's a little sneak peek into the courses I've had
+                            the pleasure of taking so far:
+                        </p>
+                        <ol>
+                            <li>
+                                Fundamentals of Industrial Software Engineering
+                            </li>
+                            <li>
+                                Basics of Object-Oriented Programming with Java
+                            </li>
+                            <li>Data Structures and Java Library</li>
+                            <li>Digital Media Formats</li>
+                            <li>Mathematics Fundamentals I</li>
+                            <li>Introduction to Academic Research</li>
+                            <li>Requirements Engineering</li>
+                            <li>Design and Ergonomics of User Interfaces</li>
+                            <li>
+                                Design Fundamentals: Perception and
+                                Understanding
+                            </li>
+                            <li>Project: User Interface Design</li>
+                            <li>Programming Web Application Interfaces</li>
+                            <li>
+                                Programming Industrial Information Systems with
+                                Java EE
+                            </li>
+                            <li>
+                                Operating Systems, Computer Networks, and
+                                Distributed Systems
+                            </li>
+                            <li>Data Modeling and Database Systems</li>
+                            <li>Statistics</li>
+                            <li>Design Thinking</li>
+                            <li>Digital Publishing</li>
+                            <li>Web Programming Fundamentals</li>
+                            <li>Project: Webshop Development</li>
+                            <li>...</li>
+                        </ol>
+                        <p>
+                            Each course has added valuable nuggets to my
+                            treasure chest of knowledge, and I'm eager to see
+                            what else is in store as I continue on this path.
+                            Onward! 🎓
+                        </p>
+                    </div>
+                    <div class="exp__point exp__point--normal flow-content">
+                        <div>
+                            <h3>Blogging at Webry</h3>
+                            <p class="text-primary">2023 - now</p>
+                            <p class="text-primary">Building a blogging site</p>
+                        </div>
+                        <p>
+                            I'm currently working on a blogging site called
+                            Webry. It's a place where I can share my knowledge
+                            I've gained over the years and help others on their
+                            journey.
+                        </p>
+                    </div>
+                    <div class="exp__point exp__point--current">
+                        <div>
+                            <h3>Working for You</h3>
+                            <p class="text-primary">2025 - future</p>
+                            <p>
+                                I'm happy to work with you on your next project
+                                when I finish my studies.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="container">
+            <div class="projects text-left flow-content">
+                <h2>Projects</h2>
+                <div class="flow-content">
+                    <p>Choose the skill you want to see projects for:</p>
+                    <div class="skill-badges">
+                        {
+                            [
+                                ...new Set(
+                                    projects
+                                        .map((project) => project.skills)
+                                        .flat()
+                                ),
+                            ].map((skill) => (
+                                <button
+                                    class="badge badge--primary badge--clickable"
+                                    data-skill={skill}
+                                    data-color={skill}
+                                >
+                                    {skill}
+                                </button>
+                            ))
+                        }
+                    </div>
+                </div>
+                <div class="project-cards project-cards--collapsed">
+                    {
+                        projects.map((project) => (
+                            <div class="project-card">
+                                <div class="project-card__content flow-content">
+                                    <div class="project-mobile-header">
+                                        <img
+                                            class="project-card__mobile-image"
+                                            src={project.image}
+                                            alt={project.name}
+                                        />
+                                        <div class="project-card__mobile-links">
+                                            <a
+                                                href={project.repo}
+                                                class="badge badge--clickable badge--active"
+                                                data-color={project.repoType.toLowerCase()}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                {project.repoType}
+                                            </a>
+                                            <a
+                                                href={project.link}
+                                                class="badge badge--clickable badge--active"
+                                                data-color="demo"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                Live Demo
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <h3>{project.name}</h3>
+                                    <p>{project.description}</p>
+                                    <div class="project-card__tags">
+                                        {project.skills.map((skill) => (
+                                            <div
+                                                class="badge badge--active"
+                                                data-skill={skill}
+                                                data-color={skill}
+                                            >
+                                                {skill}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div class="project-card__right">
+                                    <div class="project-card__image">
+                                        <img
+                                            src={project.image}
+                                            alt={project.name}
+                                        />
+                                    </div>
+                                    <div class="project-card__links">
+                                        <a
+                                            href={project.repo}
+                                            class="badge badge--clickable badge--active"
+                                            data-color={project.repoType.toLowerCase()}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            {project.repoType}
+                                        </a>
+                                        <a
+                                            href={project.link}
+                                            class="badge badge--clickable badge--active"
+                                            data-color="demo"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            Live Demo
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+                <button class="projects-see-more badge badge--active"
+                    >See More</button
+                >
+            </div>
+        </section>
+        <section class="container">
+            <div class="contact text-left flow-content">
+                <h2>Contact</h2>
+                <div class="flow-content">
+                    <p>You can contact me via:</p>
+                    <div class="contact__badges">
+                        <a
+                            href="mailto:office.samigo.a@gmail.com"
+                            class="badge badge--primary badge--clickable badge--active"
+                            data-color="gmail">Gmail</a
+                        >
+                        <a
+                            href="https://www.linkedin.com/in/samuel-braun/"
+                            class="badge badge--primary badge--clickable badge--active"
+                            data-color="linkedin">LinkedIn</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+        <Footer />
+        <script>
+            const skillButtons =
+                document.querySelectorAll("button[data-skill]");
+            skillButtons.forEach((skillButton) => {
+                skillButton.addEventListener("click", toggleSkill);
+            });
+            const projectsSeeMore =
+                document.querySelector(".projects-see-more");
+            projectsSeeMore.addEventListener("click", toggleProjects);
+
+            function toggleSkill(e) {
+                const skill = e.target.dataset.skill;
+                const isActive = !this.classList.contains("badge--active");
+                this.classList.toggle("badge--active", isActive);
+
+                const allActiveSkills = [
+                    ...document.querySelectorAll(
+                        ".skill-badges .badge--active"
+                    ),
+                ].map((activeSkill) => activeSkill.dataset.skill);
+                const allProjects = [
+                    ...document.querySelectorAll(".project-card"),
+                ];
+
+                if (allActiveSkills.length === 0)
+                    return allProjects.forEach((project) =>
+                        project.classList.remove("project-card--hidden")
+                    );
+
+                allProjects.forEach((project) => {
+                    const projectSkills = [
+                        ...project.querySelectorAll(".badge"),
+                    ].map((badge) => badge.dataset.skill);
+                    const hasAllSkills = allActiveSkills.some((activeSkill) =>
+                        projectSkills.includes(activeSkill)
+                    );
+                    project.classList.toggle(
+                        "project-card--hidden",
+                        !hasAllSkills
+                    );
+                });
+            }
+
+            function toggleProjects() {
+                const projectCards = document.querySelector(".project-cards");
+                projectCards.classList.toggle(
+                    "project-cards--collapsed",
+                    !projectCards.classList.contains("project-cards--collapsed")
+                );
+            }
+        </script>
         <style>
             body {
                 text-align: center;
+            }
+
+            ul,
+            ol {
+                margin-left: 1.5rem;
             }
 
             main {
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                min-height: calc(50vh - var(--header-height));
+            }
+
+            .hero {
+                display: flex;
+                text-align: left;
+                align-items: center;
+            }
+
+            .projects,
+            .contact,
+            .hero {
+                margin: 3rem;
+            }
+
+            .projects {
+                position: relative;
+            }
+
+            .hero__desc {
+                max-width: 50%;
+            }
+
+            .hero .mobile-img {
+                display: none;
+            }
+
+            .avatar-flex-item {
+                flex: 1;
+            }
+
+            .avatar {
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 200px;
+                border-radius: 2px;
+            }
+
+            .socials {
+                justify-content: left;
+            }
+
+            .experience {
+                margin: 0 3rem;
+            }
+
+            .exp__point {
+                position: relative;
+                padding-left: 3rem;
+            }
+
+            .exp__point::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 2rem;
+                height: 2rem;
+                border: 2px solid var(--color-black);
+                border-radius: 50%;
+            }
+
+            .exp__point--normal::after {
+                content: "";
+                position: absolute;
+                top: 1rem;
+                left: 1rem;
+                width: 2px;
+                height: calc(100% + 1rem);
+                background-color: var(--color-black);
+                transform: translateY(1rem) translateX(-50%);
+            }
+
+            .exp__point--current::after {
+                content: "";
+                position: absolute;
+                top: 1rem;
+                left: 1rem;
+                width: 0px;
+                border-right: 2px dotted var(--color-black);
+                height: calc(100% + 1rem);
+                transform: translateY(1rem) translateX(-50%);
+            }
+
+            .exp__point:last-of-type {
+                margin-bottom: 6rem;
+            }
+
+            .badge {
+                display: inline-block;
+                border-radius: 1rem;
+                background-color: var(--badge-bg, var(--color-light-secondary));
+                color: var(--badge-fg, var(--color-black));
+                padding: 0 0.5rem;
+                margin: 0.1rem;
+                text-transform: capitalize;
+            }
+
+            .badge--clickable:hover {
+                background-color: var(
+                    --badge-bg-hover,
+                    var(--color-light-triary)
+                );
+                color: var(--badge-fg-hover, var(--color-black));
+            }
+
+            .badge--active {
+                --badge-bg: var(--color-primary-2);
+                --badge-fg: var(--color-white);
+            }
+
+            .badge--clickable.badge--active:hover {
+                opacity: 0.8;
+                background-color: var(--badge-bg, var(--color-light-triary));
+                color: var(--badge-fg, var(--color-black));
+            }
+
+            .badge--active[data-color="astro"] {
+                --badge-bg: var(--color-astro);
+                --badge-fg: var(--color-white);
+            }
+
+            .badge--active[data-color="typescript"] {
+                --badge-bg: var(--color-typescript);
+                --badge-fg: var(--color-white);
+            }
+
+            .badge--active[data-color="tailwind"] {
+                --badge-bg: var(--color-tailwind);
+                --badge-fg: var(--color-white);
+            }
+
+            .badge--active[data-color="sass"],
+            .badge--active[data-color="scss"] {
+                --badge-bg: var(--color-sass);
+                --badge-fg: var(--color-white);
+            }
+
+            .badge--active[data-color="angular"] {
+                --badge-bg: var(--color-angular);
+                --badge-fg: var(--color-white);
+            }
+
+            .badge--active[data-color="gmail"] {
+                --badge-bg: var(--color-gmail);
+                --badge-fg: var(--color-white);
+            }
+
+            .badge--active[data-color="linkedin"] {
+                --badge-bg: var(--color-linkedin);
+                --badge-fg: var(--color-white);
+            }
+
+            .badge--active[data-color="javascript"] {
+                --badge-bg: var(--color-javascript);
+                --badge-fg: var(--color-black);
+            }
+
+            .badge--active[data-color="github"] {
+                --badge-bg: var(--color-github);
+                --badge-fg: var(--color-white);
+            }
+
+            .badge--active[data-color="html"] {
+                --badge-bg: var(--color-html);
+                --badge-fg: var(--color-white);
+            }
+
+            .badge--active[data-color="css"] {
+                --badge-bg: var(--color-css);
+                --badge-fg: var(--color-white);
+            }
+
+            .project-card {
+                display: flex;
+                justify-content: space-between;
+                --badge-bg: var(--color-black);
+                --badge-fg: var(--color-white);
+                background-color: var(--color-light-secondary);
+                border-radius: 0.5rem;
+                padding: 3rem 2rem;
+                margin: 1.5rem auto;
+            }
+
+            .project-card--hidden {
+                display: none;
+            }
+
+            .project-cards--collapsed {
+                max-height: 420px;
+                overflow: hidden;
+                position: relative;
+                margin-top: 0 !important; /* override margin collapse caused by position: relative */
+            }
+
+            .project-cards--collapsed::before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 3rem;
+                transform: translateY(-100%);
+                background: linear-gradient(
+                    to bottom,
+                    transparent,
+                    var(--color-white)
+                );
+                pointer-events: none;
+            }
+
+            .project-cards--collapsed::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 3rem;
+                background: var(--color-white);
+                pointer-events: none;
+            }
+
+            .projects-see-more {
+                display: inline-block;
+                position: absolute;
+                text-align: center;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                display: none;
+            }
+
+            .project-cards--collapsed + .projects-see-more {
+                display: block;
+            }
+
+            .projects-see-more:hover {
+                opacity: 0.8;
+            }
+
+            .project-card__links {
+                color: var(--color-white);
+                margin-top: 1.5rem;
+            }
+
+            .project-card__mobile-links {
+                color: var(--color-white);
+            }
+
+            .project-card__right {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-end;
+                flex: 0 0 300px;
+            }
+
+            .project-card__image img {
+                height: 4rem;
+            }
+
+            .project-mobile-header {
+                display: none;
+            }
+
+            .project-card__mobile-image {
+                display: none;
+            }
+
+            a {
+                color: var(--color-primary-orange);
+                font-weight: bold;
+                text-decoration: underline wavy;
+            }
+
+            a:hover {
+                opacity: 0.8;
+            }
+
+            a.badge {
+                color: var(--color-white);
+                text-decoration: none;
+                font-weight: normal;
+            }
+
+            a.badge,
+            a.badge:visited,
+            a.badge:active {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .contact__badges {
+                color: var(--color-white);
+            }
+
+            section + section {
+                margin: 12rem 0;
+            }
+
+            @media (max-width: 768px) {
+                .hero {
+                    flex-direction: column;
+                    min-height: initial;
+                    margin: 3rem;
+                    text-align: center;
+                }
+
+                .hero .desktop-img {
+                    display: none;
+                }
+
+                .hero .mobile-img {
+                    display: block;
+                }
+
+                .hero__desc {
+                    max-width: 100%;
+                }
+
+                .socials {
+                    justify-content: center;
+                }
+
+                .project-card__right {
+                    display: none;
+                }
+
+                .project-card__mobile-image {
+                    display: block;
+                    height: 3rem;
+                }
+
+                .project-mobile-header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .project-mobile-header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: var(--flow-content-small);
+                }
             }
         </style>
-    </head>
-    <body>
-        <Navigation />
-        <main class="container">
-            <section class="flow-content-big">
-                <h1>Hey, I'm Samuel Braun</h1>
-                <p>
-                    Webry is a project I started to share my knowledge and
-                    experience as well as tools I build. Its all about the
-                    modern web. This is a place where I can share my thoughts
-                    and ideas with the world. More content will be added soon.
-                    You can follow my journey on LinkedIn and Dev.to:
-                </p>
-                <div class="socials">
-                    <a
-                        href={author.data.devto}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="socials__devto"
-                        aria-label="Visit Samuel Braun's Dev.to profile"
-                        title="Visit Samuel Braun's Dev.to profile"
-                    >
-                        <DevToIcon />
-                    </a>
-                    <a
-                        href={author.data.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="socials__linkedin"
-                        aria-label="Visit Samuel Braun's LinkedIn profile"
-                        title="Visit Samuel Braun's LinkedIn profile"
-                    >
-                        <LinkedInIcon />
-                    </a>
-                </div>
-            </section>
-        </main>
-        <Footer />
     </body>
 </html>
