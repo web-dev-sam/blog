@@ -58,6 +58,9 @@
     --color-figma: #f24e1e;
     --color-gmail: #d14836;
     --color-linkedin: #0077b5;
+    --color-github: #333;
+    --color-gitlab: #fc6d26;
+    --color-bitbucket: #0052cc;
     
     --color-border: var(--color-dark-secondary);
     --web-bg: var(--color-white);

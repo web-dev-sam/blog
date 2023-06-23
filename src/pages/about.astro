@@ -3,7 +3,7 @@ import "../styles/global.css";
 
 import Navigation from "../components/Navigation.astro";
 import Head from "../components/Head.astro";
-import { CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 import DevToIcon from "../components/icons/DevToIcon.astro";
 import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
 import Analytics from "../components/Analytics.astro";
@@ -16,15 +16,19 @@ const projects = [
         name: "Webry",
         description: "My personal website and blog",
         link: "https://www.webry.com",
-        image: "/assets/projects/webry.png",
-        skills: ["astro", "typescript", "javascript", "seo"],
+        image: "/assets/projects/webry.svg",
+        skills: ["astro", "typescript", "javascript", "css", "seo"],
+        repo: "https://github.com/MindLaborDev/blog",
+        repoType: "GitHub",
     },
     {
         name: "Frac",
         description: "A Mandelbrot set generator",
         link: "https://frac.webry.com",
         image: "/assets/projects/frac.png",
-        skills: ["angular", "typescript", "sass"],
+        skills: ["angular", "typescript", "javascript", "glsl", "scss", "html"],
+        repo: "https://github.com/MindLaborDev/Frac",
+        repoType: "GitHub",
     },
 ];
 ---
@@ -299,10 +303,13 @@ const projects = [
                             It doesn't end, though - I'm still coding, learning,
                             and building. Curious to see what I've been up to?
                             You can find most of my projects on my <a
-                                href="https://github.com/MindLaborDev">GitHub</a
+                                href="https://github.com/MindLaborDev"
+                                target="_blank"
+                                rel="noopener noreferrer">GitHub</a
                             > and <a
                                 href="https://bitbucket.org/samuel-braun/workspace/projects/"
-                                >Bitbucket</a
+                                target="_blank"
+                                rel="noopener noreferrer">Bitbucket</a
                             >.
                         </p>
                         <p>
@@ -452,6 +459,34 @@ const projects = [
                                                 {skill}
                                             </div>
                                         ))}
+                                    </div>
+                                </div>
+                                <div class="project-card__right">
+                                    <div class="project-card__image">
+                                        <img
+                                            src={project.image}
+                                            alt={project.name}
+                                        />
+                                    </div>
+                                    <div class="project-card__links">
+                                        <a
+                                            href={project.repo}
+                                            class="badge badge--clickable badge--active"
+                                            data-color={project.repoType.toLowerCase()}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            {project.repoType}
+                                        </a>
+                                        <a
+                                            href={project.link}
+                                            class="badge badge--clickable badge--active"
+                                            data-color="demo"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            Live Demo
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -702,7 +737,14 @@ const projects = [
                 --badge-fg: var(--color-black);
             }
 
+            .badge--active[data-color="github"] {
+                --badge-bg: var(--color-github);
+                --badge-fg: var(--color-white);
+            }
+
             .project-card {
+                display: flex;
+                justify-content: space-between;
                 --badge-bg: var(--color-black);
                 --badge-fg: var(--color-white);
                 background-color: var(--color-light-secondary);
@@ -734,6 +776,7 @@ const projects = [
                     transparent,
                     var(--color-white)
                 );
+                pointer-events: none;
             }
 
             .projects-see-more {
@@ -745,10 +788,43 @@ const projects = [
                 transform: translateX(-50%);
             }
 
+            .project-card__links {
+                color: var(--color-white);
+                margin-top: 1.5rem;
+            }
+
+            .project-card__right {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-end;
+            }
+
+            .project-card__image img {
+                height: 4rem;
+            }
+
+            a {
+                color: var(--color-primary-orange);
+                font-weight: bold;
+                text-decoration: underline wavy;
+            }
+
+            a:hover {
+                opacity: 0.8;
+            }
+
+            a.badge {
+                color: var(--color-white);
+                text-decoration: none;
+                font-weight: normal;
+            }
+
             a.badge,
             a.badge:visited,
             a.badge:active {
                 color: inherit;
+                text-decoration: none;
             }
 
             .contact__badges {
