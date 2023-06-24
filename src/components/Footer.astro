@@ -6,7 +6,7 @@ import GitHubIcon from "./icons/GithubIcon.astro";
 <footer>
     <div class="container">
         <ul class="footer__rights">
-            <li>
+            <li class="copyright">
                 &copy; {new Date().getFullYear()} Webry
             </li>
             <li class="flex-spacer"></li>
@@ -43,5 +43,16 @@ import GitHubIcon from "./icons/GithubIcon.astro";
         gap: var(--padding-big);
         padding: var(--padding-big) 3rem;
         list-style: none;
+    }
+
+    @media screen and (max-width: 768px) {
+        .copyright,
+        .footer__rights .flex-spacer {
+            display: none;
+        }
+
+        .footer__rights {
+            justify-content: space-between;
+        }
     }
 </style>

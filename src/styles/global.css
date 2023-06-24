@@ -78,7 +78,7 @@
     --h2-font-size: clamp(1.563rem, 5vw, 2.441rem);
     --h3-font-size: clamp(1.25rem, 5vw, 1.953rem);
     --h4-font-size: clamp(1rem, 3vw, 1.563rem);
-    --p-font-size: 1rem;
+    --p-font-size: 1.125rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -153,6 +153,11 @@ h3 {
     line-height: 1.25em;
 }
 
+p {
+    font-size: var(--p-font-size);
+    line-height: 1.75em;
+}
+
 .btn {
     display: inline-block;
 }
@@ -184,6 +189,10 @@ ul+pre {
 pre {
     padding: 1rem;
     border-radius: 0.5rem;
+}
+
+.astro-code {
+    background-color: var(--color-black) !important;
 }
 
 .flow-content>*+* {

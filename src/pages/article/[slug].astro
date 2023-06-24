@@ -6,7 +6,6 @@ import { CollectionEntry, getCollection } from "astro:content";
 import Navigation from "../../components/Navigation.astro";
 import Head from "../../components/Head.astro";
 import DevToIcon from "../../components/icons/DevToIcon.astro";
-import LinkedInIcon from "../../components/icons/LinkedInIcon.astro";
 import Analytics from "../../components/Analytics.astro";
 import Footer from "../../components/Footer.astro";
 
@@ -152,6 +151,21 @@ const { Content } = await post.render();
                 </div>
             </div>
         </main>
+        <button aria-label="Scroll to top" class="scroll-to-top">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-chevron-up"
+                ><polyline points="18 15 12 9 6 15"></polyline></svg
+            >
+        </button>
         <Footer />
         <script>
             const links = document.querySelectorAll("main a");
@@ -163,6 +177,11 @@ const { Content } = await post.render();
                     link.setAttribute("target", "_blank");
                     link.setAttribute("rel", "noopener noreferrer");
                 }
+            });
+
+            const scrollButton = document.querySelector(".scroll-to-top");
+            scrollButton.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
             });
         </script>
         <style>
@@ -204,6 +223,31 @@ const { Content } = await post.render();
 
             .author__name time {
                 opacity: 0.5;
+            }
+
+            .scroll-to-top {
+                position: sticky;
+                bottom: 3rem;
+                left: calc(100vw - 7rem);
+                background: var(--color-black);
+                color: var(--color-white);
+                border-radius: 50%;
+                width: 3rem;
+                height: 3rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .scroll-to-top:hover {
+                background: var(--color-dark-secondary);
+            }
+
+            @media (max-width: 768px) {
+                .scroll-to-top {
+                    bottom: 3rem;
+                }
             }
         </style>
     </body>
