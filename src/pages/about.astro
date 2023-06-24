@@ -8,6 +8,7 @@ import DevToIcon from "../components/icons/DevToIcon.astro";
 import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
 import Analytics from "../components/Analytics.astro";
 import Footer from "../components/Footer.astro";
+import pfp from "../assets/author/pfp/samuel-braun.jpg";
 
 const authors = await getCollection("author");
 const author = authors.find((author) => author.slug === "samuel-braun")!;
@@ -58,7 +59,7 @@ const projects = [
                             width="200"
                             height="200"
                             class="avatar mobile-img"
-                            src="/assets/author/pfp/samuel-braun.jpg"
+                            src={pfp}
                             alt="Samuel Braun"
                         />
                         <p>
@@ -97,7 +98,8 @@ const projects = [
                             width="200"
                             height="200"
                             class="avatar desktop-img"
-                            src="/assets/author/pfp/samuel-braun.jpg"
+                            src={pfp}
+                            alt="Samuel Braun"
                         />
                     </div>
                 </div>
