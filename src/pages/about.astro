@@ -27,7 +27,7 @@ const projects = [
         description:
             "A Web Application that renders the Mandelbrot using GPU power with three.js and Angular. This was one of my first projects that went through many iterations. This is the current most recent version.",
         link: "https://frac.webry.com",
-        image: "/assets/projects/frac.png",
+        image: "/assets/projects/frac.webp",
         skills: ["angular", "typescript", "javascript", "glsl", "scss", "html"],
         repo: "https://github.com/MindLaborDev/Frac",
         repoType: "GitHub",
@@ -55,8 +55,11 @@ const projects = [
                     <div class="hero__desc flow-content-big">
                         <h1>Hey, I'm Samuel Braun</h1>
                         <img
+                            width="200"
+                            height="200"
                             class="avatar mobile-img"
                             src="/assets/author/pfp/samuel-braun.jpg"
+                            alt="Samuel Braun"
                         />
                         <p>
                             Webry is a project I started to share my knowledge
@@ -91,6 +94,8 @@ const projects = [
                     </div>
                     <div class="avatar-flex-item">
                         <img
+                            width="200"
+                            height="200"
                             class="avatar desktop-img"
                             src="/assets/author/pfp/samuel-braun.jpg"
                         />
@@ -130,10 +135,10 @@ const projects = [
                             mathematics with art.
                         </p>
                         <p>
-                            You can take a peek at the refined version <a
+                            You can take a peek at the <a
                                 href="https://frac.webry.com/"
                                 target="_blank"
-                                rel="noopener noreferrer">here</a
+                                rel="noopener noreferrer">refined version</a
                             >. It's a testament to how one can continually grow
                             and innovate. I hope it inspires you as much as it
                             did me. 🚀
@@ -522,7 +527,7 @@ const projects = [
                         ))
                     }
                 </div>
-                <button class="projects-see-more badge badge--active"
+                <button class="projects-see-more badge badge--black"
                     >See More</button
                 >
             </div>
@@ -706,7 +711,7 @@ const projects = [
                 border-radius: 1rem;
                 background-color: var(--badge-bg, var(--color-light-secondary));
                 color: var(--badge-fg, var(--color-black));
-                padding: 0 0.5rem;
+                padding: 0.5rem 1rem;
                 margin: 0.1rem;
                 text-transform: capitalize;
             }
@@ -721,6 +726,11 @@ const projects = [
 
             .badge--active {
                 --badge-bg: var(--color-primary-2);
+                --badge-fg: var(--color-white);
+            }
+
+            .badge--black {
+                --badge-bg: var(--color-black);
                 --badge-fg: var(--color-white);
             }
 
@@ -882,7 +892,9 @@ const projects = [
                 display: none;
             }
 
-            a {
+            a,
+            a:active, 
+            a:visited {
                 color: var(--color-primary-orange);
                 font-weight: bold;
                 text-decoration: underline wavy;
