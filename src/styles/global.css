@@ -211,6 +211,7 @@ pre {
     line-height: 1.75rem;
     vertical-align: middle;
     text-align: left;
+    text-wrap: balance;
 }
 
 body,
