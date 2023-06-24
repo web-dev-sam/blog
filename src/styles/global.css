@@ -267,12 +267,16 @@ body,
     gap: 1rem;
 }
 
+:is(.socials__linkedin, .socials__devto):is(:active, :visited) {
+    color: var(--color-black);
+}
+
 .socials__devto:hover {
-    color: var(--color-primary);
+    color: var(--color-gray);
 }
 
 .socials__linkedin:hover {
-    color: #378fe9;
+    color: var(--color-gray);
 }
 
 /* BLOGS */
