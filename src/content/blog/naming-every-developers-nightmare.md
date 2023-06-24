@@ -3,7 +3,7 @@ date: 2023-04-18
 moddate: 2021-04-22
 title: Naming! Every Developer's Nightmare
 author: samuel-braun
-cover: /assets/blog/naming-every-developers-nightmare/cover.jpg
+cover: /assets/blog/naming-every-developers-nightmare/cover.jpg.webp
 devto: https://dev.to/samuel-braun/naming-every-developers-nightmare-3ge8
 
 tags:
@@ -13,7 +13,7 @@ tags:
   - tutorial
 
 share:
-  image: https://webry.com/assets/blog/naming-every-developers-nightmare/og-cover.jpg
+  image: https://webry.com/assets/blog/naming-every-developers-nightmare/cover.jpg.webp
   title: Naming! Every Developer's Nightmare
   description: >
     Improve your code's readability with my guide on variable naming. Explore a powerful naming pattern to create self-explanatory and maintainable code, enhancing your programming experience and productivity.

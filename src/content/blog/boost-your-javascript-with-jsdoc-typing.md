@@ -3,7 +3,7 @@ date: 2023-04-08
 moddate: 2021-04-12
 title: Boost Your JavaScript with JSDoc Typing
 author: samuel-braun
-cover: /assets/blog/boost-your-javascript-with-jsdoc-typing/cover.jpg
+cover: /assets/blog/boost-your-javascript-with-jsdoc-typing/cover.jpg.webp
 devto: https://dev.to/samuel-braun/boost-your-javascript-with-jsdoc-typing-3hb3
 
 tags:
@@ -15,7 +15,7 @@ tags:
   - type checking
 
 share:
-  image: https://webry.com/assets/blog/boost-your-javascript-with-jsdoc-typing/og-cover.jpg
+  image: https://webry.com/assets/blog/boost-your-javascript-with-jsdoc-typing/cover.jpg.webp
   title: Boost Your JavaScript with JSDoc Typing
   description: >
     Explore my in-depth guide on leveraging JSDoc to enhance your JavaScript code with robust typing. Boost code quality, maintainability, and developer productivity with this powerful tool.
