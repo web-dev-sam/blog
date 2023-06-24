@@ -309,7 +309,7 @@ body,
 }
 
 .card-button {
-    background-color: var(--color-primary-2);
+    background-color: var(--color-black);
     color: white;
     font-weight: bold;
     text-transform: uppercase;
