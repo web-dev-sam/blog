@@ -28,8 +28,58 @@ const projects = [
             "A Web Application that renders the Mandelbrot using GPU power with three.js and Angular. This was one of my first projects that went through many iterations. This is the current most recent version.",
         link: "https://frac.webry.com",
         image: "/assets/projects/frac.webp",
-        skills: ["angular", "typescript", "javascript", "glsl", "scss", "html"],
+        skills: ["angular", "typescript", "javascript", "sass", "html"],
         repo: "https://github.com/MindLaborDev/Frac",
+        repoType: "GitHub",
+    },
+    {
+        name: "Song Timer",
+        description:
+            "An intuitive web app that automates the synchronization of your songs to a custom beat length. Perfect for Beat Saber mappers and music enthusiasts - effortlessly align the first beat without the hassle of manual editing through Audacity!",
+        link: "https://song-timer.vercel.app/",
+        image: "/assets/projects/song-timer.webp",
+        skills: ["vue", "typescript", "javascript", "css", "html"],
+        repo: "https://github.com/MindLaborDev/song-timer",
+        repoType: "GitHub",
+    },
+    {
+        name: "Dictionary Web App",
+        description:
+            "A simple dictionary web app that uses the dictionaryapi.dev API. It was built with SolidJS and TailwindCSS.",
+        link: "https://solidjs-dictionary.vercel.app/",
+        image: "/assets/projects/dictionary.webp",
+        skills: ["solidjs", "typescript", "javascript", "tailwind", "css", "html"],
+        repo: "https://bitbucket.org/samuel-braun/solidjs-dictionary/src/master/",
+        repoType: "Bitbucket",
+    },
+    {
+        name: "Scoresaber Chrome Extension",
+        description:
+            "A Chrome extension that adds much needed buttons to the Scoresaber leaderboards so people can install their songs with one click.",
+        link: "https://chrome.google.com/webstore/detail/scoresaber-buttons/mjpdbfngmbgokogdekgacbonopbkaclc",
+        image: "/assets/projects/scoresaber.webp",
+        skills: ["javascript", "css", "html"],
+        repo: "https://github.com/MindLaborDev/beatsaver-leaderboard-buttons",
+        repoType: "GitHub",
+    },
+    {
+        name: "Facts About Planets",
+        description:
+            "A simple web app that displays facts about the planets in our solar system. I had a blast working on the animations.",
+        link: "https://nuxtjs-planets.vercel.app/",
+        image: "/assets/projects/planets.webp",
+        skills: ["nuxt", "typescript", "tailwind", "css", "html"],
+        repo: "https://bitbucket.org/samuel-braun/nuxtjs-planets-fact-site/src/master/",
+        repoType: "Bitbucket",
+    },
+    {
+        name: "Beatsaber Tournament Overlay",
+        description:
+            "A custom overlay for the Beat Saber tournament I hosted. It was built with Vue using websockets to communicate with the game.",
+        link: "https://github.com/mgtourney/overlay",
+        image: "/assets/projects/tourney.webp",
+        skills: ["vue", "typescript", "css", "html", "websocket"],
+        repo: "https://github.com/mgtourney/overlay",
         repoType: "GitHub",
     }
 ];
@@ -553,6 +603,12 @@ const projects = [
                 </div>
             </div>
         </section>
+        <div class="modal">
+            <div class="modal__content">
+                <img src="" alt="" />
+            </div>
+            <button class="modal__close">&times;</button>
+        </div>
         <Footer />
         <script>
             const skillButtons =
@@ -563,6 +619,22 @@ const projects = [
             const projectsSeeMore =
                 document.querySelector(".projects-see-more");
             projectsSeeMore.addEventListener("click", toggleProjects);
+
+            const imgs = [...document.querySelectorAll(".project-card__image img")];
+            imgs.forEach((img) => {
+                img.addEventListener("click", () => {
+                    const modal = document.querySelector(".modal");
+                    const modalImg = document.querySelector(".modal img");
+                    modalImg.src = img.src;
+                    modal.classList.add("modal--active");
+                });
+            });
+
+            const modalClose = document.querySelector(".modal__close, .modal");
+            modalClose.addEventListener("click", () => {
+                const modal = document.querySelector(".modal");
+                modal.classList.remove("modal--active");
+            });
 
             function toggleSkill(e) {
                 const skill = e.target.dataset.skill;
@@ -620,6 +692,52 @@ const projects = [
                 align-items: center;
                 justify-content: center;
                 min-height: calc(50vh - var(--header-height));
+            }
+
+            .modal {
+                display: flex;
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                align-items: center;
+                justify-content: center;
+                z-index: 100;
+                user-select: none;
+            }
+
+            .modal__content {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                pointer-events: none;
+            }
+
+            .modal img {
+                max-height: 400px;
+                max-width: 100%;
+                height: 400px;
+                pointer-events: none;
+            }
+
+            .modal__close {
+                position: absolute;
+                top: 3rem;
+                right: 3rem;
+                padding: 0.5rem;
+                font-size: 3rem;
+                background-color: transparent;
+                border: none;
+                color: white;
+                cursor: pointer;
+            }
+
+            .modal--active {
+                display: flex;
             }
 
             .hero {
@@ -813,7 +931,7 @@ const projects = [
             }
 
             .project-cards--collapsed {
-                max-height: 420px;
+                max-height: 75vh;
                 overflow: hidden;
                 position: relative;
                 margin-top: 0 !important; /* override margin collapse caused by position: relative */
@@ -883,6 +1001,12 @@ const projects = [
 
             .project-card__image img {
                 height: 4rem;
+                transition: transform 0.4s ease-in-out;
+                cursor: pointer;
+            }
+
+            .project-card__image img:hover {
+                transform: scale(1.1);
             }
 
             .project-mobile-header {
