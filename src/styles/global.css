@@ -100,6 +100,7 @@ body {
     color: var(--color-black);
     background: var(--web-bg);
     text-align: center;
+    overflow-x: hidden;
 }
 
 main {
