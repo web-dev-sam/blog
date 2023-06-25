@@ -359,7 +359,7 @@ body,
 
 .main-markdown-content :is(ul, ol) {
     list-style: disc;
-    margin-left: 2.5rem;
+    margin-left: 2rem;
 }
 
 /* FOOTER */
