@@ -135,85 +135,100 @@ const { Content } = await post.render();
     <body>
         <Navigation />
         <main class="container">
-            <article class="content" devto-id={post.data.devtoid}>
-                <h1 class="text-heading">{post.data.title}</h1>
-                <div class="author-wrapper">
-                    <div class="author">
-                        <a
-                            href="/about"
-                            aria-label="About Samuel Braun"
-                            title="About Samuel Braun"
-                            class="author__image-wrapper"
-                            ><img
-                                src={author.data.image}
-                                alt="Author"
-                                class="author__image"
-                            /></a
-                        >
-                        <div class="author__name">
+            <article
+                class="content flow-content-big"
+                devto-id={post.data.devtoid}
+            >
+                <div class="relative">
+                    <img src={post.data.cover} alt="Cover" class="cover" />
+                    <button class="absolute bottom-0 right-0 badge badge--clickable badge--active badge--black">
+                        <div class="flex text-white items-center">
+                            <span class="mr-2 w-max hide-mobile">Read on</span>
+                            <DevToIcon />
+                        </div>
+                    </button>
+                </div>
+                <div class="flow-content">
+                    <h1 class="text-heading">{post.data.title}</h1>
+                    <div class="author-wrapper">
+                        <div class="author">
                             <a
                                 href="/about"
                                 aria-label="About Samuel Braun"
-                                class="mx-2 whitespace-nowrap"
-                                >{author.data.name}</a
-                            > · <span class="mx-2 whitespace-nowrap"
-                                ><svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="feather feather-book-open inline-block mr-1"
-                                    ><path
-                                        d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"
-                                    ></path><path
-                                        d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"
-                                    ></path></svg
-                                >
-                                {post.data.min} min
-                            </span> ·
-                            <time
-                                class="mx-2 whitespace-nowrap"
-                                title={"Published on " +
-                                    formatDate(new Date(post.data.date))}
-                                >{formatDate(new Date(post.data.date))}</time
+                                title="About Samuel Braun"
+                                class="author__image-wrapper"
+                                ><img
+                                    src={author.data.image}
+                                    alt="Author"
+                                    class="author__image"
+                                /></a
                             >
-                        </div>
-                    </div>
-                    <div>
-                        <div class="socials">
-                            <a
-                                href={post.data.devto}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="socials__devto"
-                                aria-label="Visit this post on Dev.to"
-                                title="Visit this post on Dev.to"
-                            >
-                                <div class="likes">
-                                    <div class="likes-value"></div>
-                                    <svg
+                            <div class="author__name">
+                                <a
+                                    href="/about"
+                                    aria-label="About Samuel Braun"
+                                    class="mx-2 whitespace-nowrap"
+                                    >{author.data.name}</a
+                                > · <span class="mx-2 whitespace-nowrap"
+                                    ><svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
+                                        width="18"
+                                        height="18"
                                         viewBox="0 0 24 24"
                                         fill="none"
-                                        stroke="#bc3535"
+                                        stroke="currentColor"
                                         stroke-width="2"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
-                                        class="feather feather-heart inline-block mr-2"
+                                        class="feather feather-book-open inline-block mr-1"
                                         ><path
-                                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                            d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"
+                                        ></path><path
+                                            d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"
                                         ></path></svg
                                     >
-                                    <DevToIcon />
-                                </div>
-                            </a>
+                                    {post.data.min} min
+                                </span> ·
+                                <time
+                                    class="mx-2 whitespace-nowrap"
+                                    title={"Published on " +
+                                        formatDate(new Date(post.data.date))}
+                                    >{
+                                        formatDate(new Date(post.data.date))
+                                    }</time
+                                >
+                            </div>
+                        </div>
+                        <div>
+                            <div class="socials">
+                                <a
+                                    href={post.data.devto}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="socials__devto"
+                                    aria-label="Visit this post on Dev.to"
+                                    title="Visit this post on Dev.to"
+                                >
+                                    <div class="likes">
+                                        <div class="likes-value mr-1"></div>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="#bc3535"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            class="feather feather-heart inline-block"
+                                            ><path
+                                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                            ></path></svg
+                                        >
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -310,7 +325,6 @@ const { Content } = await post.render();
             .author {
                 display: flex;
                 align-items: center;
-                margin: 2rem 0;
                 text-align: left;
             }
 
@@ -353,6 +367,10 @@ const { Content } = await post.render();
             @media (max-width: 440px) {
                 .author__image-wrapper {
                     display: none;
+                }
+
+                .author__name {
+                    margin-left: -0.5rem;
                 }
             }
         </style>

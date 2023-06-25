@@ -6,7 +6,6 @@ UX Debt:
 UI Debt:
 - Fix potential inconsitent spacings
 - main svg background as HTML
-- blog = 50% (maybe headings centered)
 - No name in blog
 - better pfp
 - likes (maybe like "See on Dev.to")
