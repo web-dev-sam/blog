@@ -1,5 +1,6 @@
 <div align="center">
-<img width="70%" src="https://github.com/MindLaborDev/blog/blob/master/public/og-cover.jpg?raw=true"/> 
+  <a href="https://www.webry.com/"><img width="70%" src="https://github.com/MindLaborDev/blog/blob/master/public/og-cover.jpg?raw=true"/> </a>
+
 <h1 align="center">Webry</h1>
 <p>Webry is a project I started to share my knowledge and experience as well as tools I build. Its all about the modern web. This is a place where I can share my thoughts and ideas with the world.<br><br>I will add more content with time.</p>
   
