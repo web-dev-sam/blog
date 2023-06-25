@@ -4,7 +4,7 @@
 <p>Webry is a project I started to share my knowledge and experience as well as tools I build. Its all about the modern web. This is a place where I can share my thoughts and ideas with the world.<br><br>I will add more content with time.</p>
   
 <a href="https://github.com/MindLaborDev/blog/tree/post-2/src/content/blog">
-<img align="center" src="https://img.shields.io/badge/Edit%20Articles-fd5a8f?style=for-the-badge"/>
+<img align="center" src="https://img.shields.io/badge/Edit%20Articles-0e0e0e?style=for-the-badge"/>
 </a>
  
 </div>
