@@ -10,7 +10,6 @@ UI Debt:
 - main svg background as HTML
 - blog = 50% (maybe headings centered)
 - No name in blog
-- fixing mobile "pre" bug
 - better pfp
 - "read article" button height consistency
 - likes (maybe like "See on Dev.to")
