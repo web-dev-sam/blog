@@ -118,6 +118,10 @@ body {
     overflow-x: hidden;
 }
 
+.noto-emoji {
+    font-family: "Noto Color Emoji", sans-serif;
+}
+
 main {
     min-height: 75vh;
 }
