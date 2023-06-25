@@ -142,11 +142,12 @@ const { Content } = await post.render();
             >
                 <div class="relative">
                     <img src={post.data.cover} alt="Cover" class="cover" />
-                    <a class="read-on-devto absolute bottom-0 right-0 badge badge--clickable badge--active badge--black"
+                    <a
+                        class="read-on-devto absolute bottom-0 right-0 badge badge--clickable badge--active badge--black"
                         href={post.data.devto}
                         target="_blank"
                         rel="noopener noreferrer"
-                        >
+                    >
                         <div class="flex text-white items-center">
                             <span class="mr-2 w-max hide-mobile">Read on</span>
                             <DevToIcon />
@@ -241,21 +242,23 @@ const { Content } = await post.render();
             >
         </button>
         <Footer />
-        <script defer>
-            const links = document.querySelectorAll("main a");
-            links.forEach((link) => {
-                if (
-                    link instanceof HTMLLinkElement &&
-                    link.href.startsWith("http")
-                ) {
-                    link.setAttribute("target", "_blank");
-                    link.setAttribute("rel", "noopener noreferrer");
-                }
-            });
+        <script is:inline>
+            window.onLoad(() => {
+                const links = document.querySelectorAll("main a");
+                links.forEach((link) => {
+                    if (
+                        link instanceof HTMLLinkElement &&
+                        link.href.startsWith("http")
+                    ) {
+                        link.setAttribute("target", "_blank");
+                        link.setAttribute("rel", "noopener noreferrer");
+                    }
+                });
 
-            const scrollButton = document.querySelector(".scroll-to-top");
-            scrollButton.addEventListener("click", () => {
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                const scrollButton = document.querySelector(".scroll-to-top");
+                scrollButton.addEventListener("click", () => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                });
             });
         </script>
         <style>

@@ -20,20 +20,24 @@ const devtoId = Astro.props.devtoId;
         ></path></svg
     >
 </div>
-<script defer>
-const devtoId = document.querySelector(".likes")?.getAttribute("devto-id");
-const likesValue = document.querySelector(".likes-value");
-const likes = document.querySelector(".likes");
-if (!devtoId || !likesValue || !likes) {
-    throw new Error("No devtoId or likesValue or likes");
-}
+<script is:inline>
+window.onLoad(() => {
+    const devtoId = document
+        .querySelector(".likes")
+        ?.getAttribute("devto-id");
+    const likesValue = document.querySelector(".likes-value");
+    const likes = document.querySelector(".likes");
+    if (!devtoId || !likesValue || !likes) {
+        throw new Error("No devtoId or likesValue or likes");
+    }
 
-fetch(`https://dev.to/api/articles/${devtoId}`)
-    .then((response) => response.json())
-    .then((data) => {
-        likesValue.textContent = data.positive_reactions_count;
-        likes.style.display = "inline-flex";
-    });
+    fetch(`https://dev.to/api/articles/${devtoId}`)
+        .then((response) => response.json())
+        .then((data) => {
+            likesValue.textContent = data.positive_reactions_count;
+            likes.style.display = "inline-flex";
+        });
+});
 </script>
 <style>
     .likes {

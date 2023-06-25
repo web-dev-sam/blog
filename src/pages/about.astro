@@ -19,7 +19,10 @@ interface Project {
     repoType: string;
 }
 
-function sortSkillsInPlaceByList(projectsData: Project[], sortedSkills: string[]): void {
+function sortSkillsInPlaceByList(
+    projectsData: Project[],
+    sortedSkills: string[]
+): void {
     // Sort the skills in place for each project based on the provided sorted skills array
     for (let project of projectsData) {
         project.skills.sort((a, b) => {
@@ -67,7 +70,14 @@ const projects: Project[] = [
             "A simple dictionary web app that uses the dictionaryapi.dev API. It was built with SolidJS and TailwindCSS.",
         link: "https://solidjs-dictionary.vercel.app/",
         image: "/assets/projects/dictionary.webp",
-        skills: ["SolidJS", "Typescript", "Javascript", "Tailwind", "CSS", "HTML"],
+        skills: [
+            "SolidJS",
+            "Typescript",
+            "Javascript",
+            "Tailwind",
+            "CSS",
+            "HTML",
+        ],
         repo: "https://bitbucket.org/samuel-braun/solidjs-dictionary/src/master/",
         repoType: "Bitbucket",
     },
@@ -100,9 +110,23 @@ const projects: Project[] = [
         skills: ["Websockets", "Vue", "Typescript", "CSS", "HTML"],
         repo: "https://github.com/mgtourney/overlay",
         repoType: "GitHub",
-    }
+    },
 ];
-const sortedSkills = ["Astro", "Nuxt", "Vue", "Angular", "SolidJS", "Typescript", "Javascript", "Tailwind", "SASS", "CSS", "HTML", "SEO", "Websockets"];
+const sortedSkills = [
+    "Astro",
+    "Nuxt",
+    "Vue",
+    "Angular",
+    "SolidJS",
+    "Typescript",
+    "Javascript",
+    "Tailwind",
+    "SASS",
+    "CSS",
+    "HTML",
+    "SEO",
+    "Websockets",
+];
 sortSkillsInPlaceByList(projects, sortedSkills);
 ---
 
@@ -163,7 +187,9 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                                 title="Connect with me on LinkedIn"
                             >
                                 <div class="flex text-white items-center">
-                                    <span class="mr-2 w-max">Connect with me</span>
+                                    <span class="mr-2 w-max"
+                                        >Connect with me</span
+                                    >
                                     <LinkedInIcon />
                                 </div>
                             </a>
@@ -630,72 +656,81 @@ sortSkillsInPlaceByList(projects, sortedSkills);
             <button class="modal__close">&times;</button>
         </div>
         <Footer />
-        <script>
-            const skillButtons =
-                document.querySelectorAll("button[data-skill]");
-            skillButtons.forEach((skillButton) => {
-                skillButton.addEventListener("click", toggleSkill);
-            });
-            const projectsSeeMore =
-                document.querySelector(".projects-see-more");
-            projectsSeeMore.addEventListener("click", toggleProjects);
-
-            const imgs = [...document.querySelectorAll(".project-card__image img")];
-            imgs.forEach((img) => {
-                img.addEventListener("click", () => {
-                    const modal = document.querySelector(".modal");
-                    const modalImg = document.querySelector(".modal img");
-                    modalImg.src = img.src;
-                    modal.classList.add("modal--active");
+        <script is:inline>
+            window.onLoad(() => {
+                const skillButtons =
+                    document.querySelectorAll("button[data-skill]");
+                skillButtons.forEach((skillButton) => {
+                    skillButton.addEventListener("click", toggleSkill);
                 });
-            });
+                const projectsSeeMore =
+                    document.querySelector(".projects-see-more");
+                projectsSeeMore.addEventListener("click", toggleProjects);
 
-            const modalClose = document.querySelector(".modal__close, .modal");
-            modalClose.addEventListener("click", () => {
-                const modal = document.querySelector(".modal");
-                modal.classList.remove("modal--active");
-            });
-
-            function toggleSkill(e) {
-                const skill = e.target.dataset.skill;
-                const isActive = !this.classList.contains("badge--active");
-                this.classList.toggle("badge--active", isActive);
-
-                const allActiveSkills = [
-                    ...document.querySelectorAll(
-                        ".skill-badges .badge--active"
-                    ),
-                ].map((activeSkill) => activeSkill.dataset.skill);
-                const allProjects = [
-                    ...document.querySelectorAll(".project-card"),
+                const imgs = [
+                    ...document.querySelectorAll(".project-card__image img"),
                 ];
-
-                if (allActiveSkills.length === 0)
-                    return allProjects.forEach((project) =>
-                        project.classList.remove("project-card--hidden")
-                    );
-
-                allProjects.forEach((project) => {
-                    const projectSkills = [
-                        ...project.querySelectorAll(".badge"),
-                    ].map((badge) => badge.dataset.skill);
-                    const hasAllSkills = allActiveSkills.some((activeSkill) =>
-                        projectSkills.includes(activeSkill)
-                    );
-                    project.classList.toggle(
-                        "project-card--hidden",
-                        !hasAllSkills
-                    );
+                imgs.forEach((img) => {
+                    img.addEventListener("click", () => {
+                        const modal = document.querySelector(".modal");
+                        const modalImg = document.querySelector(".modal img");
+                        modalImg.src = img.src;
+                        modal.classList.add("modal--active");
+                    });
                 });
-            }
 
-            function toggleProjects() {
-                const projectCards = document.querySelector(".project-cards");
-                projectCards.classList.toggle(
-                    "project-cards--collapsed",
-                    !projectCards.classList.contains("project-cards--collapsed")
+                const modalClose = document.querySelector(
+                    ".modal__close, .modal"
                 );
-            }
+                modalClose.addEventListener("click", () => {
+                    const modal = document.querySelector(".modal");
+                    modal.classList.remove("modal--active");
+                });
+
+                function toggleSkill(e) {
+                    const skill = e.target.dataset.skill;
+                    const isActive = !this.classList.contains("badge--active");
+                    this.classList.toggle("badge--active", isActive);
+
+                    const allActiveSkills = [
+                        ...document.querySelectorAll(
+                            ".skill-badges .badge--active"
+                        ),
+                    ].map((activeSkill) => activeSkill.dataset.skill);
+                    const allProjects = [
+                        ...document.querySelectorAll(".project-card"),
+                    ];
+
+                    if (allActiveSkills.length === 0)
+                        return allProjects.forEach((project) =>
+                            project.classList.remove("project-card--hidden")
+                        );
+
+                    allProjects.forEach((project) => {
+                        const projectSkills = [
+                            ...project.querySelectorAll(".badge"),
+                        ].map((badge) => badge.dataset.skill);
+                        const hasAllSkills = allActiveSkills.some(
+                            (activeSkill) => projectSkills.includes(activeSkill)
+                        );
+                        project.classList.toggle(
+                            "project-card--hidden",
+                            !hasAllSkills
+                        );
+                    });
+                }
+
+                function toggleProjects() {
+                    const projectCards =
+                        document.querySelector(".project-cards");
+                    projectCards.classList.toggle(
+                        "project-cards--collapsed",
+                        !projectCards.classList.contains(
+                            "project-cards--collapsed"
+                        )
+                    );
+                }
+            });
         </script>
         <style>
             body {
@@ -952,7 +987,7 @@ sortSkillsInPlaceByList(projects, sortedSkills);
             }
 
             a,
-            a:active, 
+            a:active,
             a:visited {
                 color: var(--color-primary-orange);
                 font-weight: bold;
