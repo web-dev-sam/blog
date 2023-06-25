@@ -8,6 +8,7 @@ import Head from "../../components/Head.astro";
 import DevToIcon from "../../components/icons/DevToIcon.astro";
 import Analytics from "../../components/Analytics.astro";
 import Footer from "../../components/Footer.astro";
+import Likes from "../../components/Likes.astro";
 
 export async function getStaticPaths() {
     const articles = await getCollection("blog");
@@ -213,24 +214,7 @@ const { Content } = await post.render();
                                     aria-label="Visit this post on Dev.to"
                                     title="Visit this post on Dev.to"
                                 >
-                                    <div class="likes">
-                                        <div class="likes-value mr-1"></div>
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="24"
-                                            height="24"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#bc3535"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            class="feather feather-heart inline-block"
-                                            ><path
-                                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-                                            ></path></svg
-                                        >
-                                    </div>
+                                    <Likes devtoId={post.data.devtoid} />
                                 </a>
                             </div>
                         </div>
@@ -257,7 +241,7 @@ const { Content } = await post.render();
             >
         </button>
         <Footer />
-        <script>
+        <script defer>
             const links = document.querySelectorAll("main a");
             links.forEach((link) => {
                 if (
@@ -273,19 +257,6 @@ const { Content } = await post.render();
             scrollButton.addEventListener("click", () => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
             });
-
-            const devtoId = document
-                .querySelector("article[devto-id]")
-                .getAttribute("devto-id");
-            const likesValue = document.querySelector(".likes-value");
-            const likes = document.querySelector(".likes");
-
-            fetch(`https://dev.to/api/articles/${devtoId}`)
-                .then((response) => response.json())
-                .then((data) => {
-                    likesValue.textContent = data.public_reactions_count;
-                    likes.style.display = "flex";
-                });
         </script>
         <style>
             .container {
@@ -303,18 +274,6 @@ const { Content } = await post.render();
 
             .socials {
                 justify-content: flex-end;
-            }
-
-            .likes {
-                display: flex;
-                display: none;
-                align-items: center;
-                gap: 0.25rem;
-                font-size: 1.125em;
-            }
-
-            .likes-value {
-                color: #bc3535;
             }
 
             .cover {
