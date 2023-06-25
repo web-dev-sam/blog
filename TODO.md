@@ -1,7 +1,6 @@
 
 UX Debt:
 - "See on Dev.to" button instead of icon
-- /about - Make button instead of icon
 - Making Projects header sticky when "see more" is clicked
 
 UI Debt:
@@ -12,9 +11,6 @@ UI Debt:
 - better pfp
 - "read article" button height consistency
 - likes (maybe like "See on Dev.to")
-- fix vue color (generally fix how brand colors are used)
-- live demo bg should be black
-- fix casing of tags
 - blog design cleaning
 - spacing on mobile
 

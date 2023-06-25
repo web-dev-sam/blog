@@ -19,33 +19,11 @@ interface Project {
     repoType: string;
 }
 
-function getSkillsByFrequency(projectsData: Project[]): string[] {
-    // Count the frequency of each skill
-    const skillFrequency: Record<string, number> = {};
-
-    for (let project of projectsData) {
-        for (let skill of project.skills) {
-            if (skill in skillFrequency) {
-                skillFrequency[skill]++;
-            } else {
-                skillFrequency[skill] = 1;
-            }
-        }
-    }
-
-    // Sort the skills by their frequency in descending order (most common to least common)
-    const sortedSkills = Object.keys(skillFrequency).sort((a, b) => {
-        return skillFrequency[b] - skillFrequency[a];
-    });
-
-    return sortedSkills;
-}
-
 function sortSkillsInPlaceByList(projectsData: Project[], sortedSkills: string[]): void {
     // Sort the skills in place for each project based on the provided sorted skills array
     for (let project of projectsData) {
         project.skills.sort((a, b) => {
-            return sortedSkills.indexOf(b) - sortedSkills.indexOf(a);
+            return sortedSkills.indexOf(a) - sortedSkills.indexOf(b);
         });
     }
 }
@@ -59,7 +37,7 @@ const projects: Project[] = [
             "Webry is a project I started to share my knowledge and experience as well as tools I build. Its all about the modern web. This is a place where I can share my thoughts and ideas with the world. More content will be added soon.",
         link: "https://www.webry.com",
         image: "/assets/projects/webry.svg",
-        skills: ["typescript", "javascript", "css", "seo", "astro"],
+        skills: ["Typescript", "Javascript", "CSS", "SEO", "Astro"],
         repo: "https://github.com/MindLaborDev/blog",
         repoType: "GitHub",
     },
@@ -69,7 +47,7 @@ const projects: Project[] = [
             "A Web Application that renders the Mandelbrot using GPU power with three.js and Angular. This was one of my first projects that went through many iterations. This is the current most recent version.",
         link: "https://frac.webry.com",
         image: "/assets/projects/frac.webp",
-        skills: ["typescript", "javascript", "sass", "html", "angular"],
+        skills: ["Typescript", "Javascript", "SASS", "HTML", "Angular"],
         repo: "https://github.com/MindLaborDev/Frac",
         repoType: "GitHub",
     },
@@ -79,7 +57,7 @@ const projects: Project[] = [
             "An intuitive web app that automates the synchronization of your songs to a custom beat length. Perfect for Beat Saber mappers and music enthusiasts - effortlessly align the first beat without the hassle of manual editing through Audacity!",
         link: "https://song-timer.vercel.app/",
         image: "/assets/projects/song-timer.webp",
-        skills: ["vue", "typescript", "javascript", "css", "html"],
+        skills: ["Vue", "Typescript", "Javascript", "CSS", "HTML"],
         repo: "https://github.com/MindLaborDev/song-timer",
         repoType: "GitHub",
     },
@@ -89,7 +67,7 @@ const projects: Project[] = [
             "A simple dictionary web app that uses the dictionaryapi.dev API. It was built with SolidJS and TailwindCSS.",
         link: "https://solidjs-dictionary.vercel.app/",
         image: "/assets/projects/dictionary.webp",
-        skills: ["solidjs", "typescript", "javascript", "tailwind", "css", "html"],
+        skills: ["SolidJS", "Typescript", "Javascript", "Tailwind", "CSS", "HTML"],
         repo: "https://bitbucket.org/samuel-braun/solidjs-dictionary/src/master/",
         repoType: "Bitbucket",
     },
@@ -99,7 +77,7 @@ const projects: Project[] = [
             "A Chrome extension that adds much needed buttons to the Scoresaber leaderboards so people can install their songs with one click.",
         link: "https://chrome.google.com/webstore/detail/scoresaber-buttons/mjpdbfngmbgokogdekgacbonopbkaclc",
         image: "/assets/projects/scoresaber.webp",
-        skills: ["javascript", "css", "html"],
+        skills: ["Javascript", "CSS", "HTML"],
         repo: "https://github.com/MindLaborDev/beatsaver-leaderboard-buttons",
         repoType: "GitHub",
     },
@@ -109,7 +87,7 @@ const projects: Project[] = [
             "A simple web app that displays facts about the planets in our solar system. I had a blast working on the animations.",
         link: "https://nuxtjs-planets.vercel.app/",
         image: "/assets/projects/planets.webp",
-        skills: ["nuxt", "typescript", "tailwind", "css", "html"],
+        skills: ["Nuxt", "Typescript", "Tailwind", "CSS", "HTML"],
         repo: "https://bitbucket.org/samuel-braun/nuxtjs-planets-fact-site/src/master/",
         repoType: "Bitbucket",
     },
@@ -117,14 +95,14 @@ const projects: Project[] = [
         name: "Beatsaber Tournament Overlay",
         description:
             "A custom overlay for the Beat Saber tournament I hosted. It was built with Vue using websockets to communicate with the game.",
-        link: "https://github.com/mgtourney/overlay",
+        link: "https://www.youtube.com/watch?v=-ejMSWVJk8M&ab_channel=Magnesium",
         image: "/assets/projects/tourney.webp",
-        skills: ["websocket", "vue", "typescript", "css", "html"],
+        skills: ["Websockets", "Vue", "Typescript", "CSS", "HTML"],
         repo: "https://github.com/mgtourney/overlay",
         repoType: "GitHub",
     }
 ];
-const sortedSkills = getSkillsByFrequency(projects);
+const sortedSkills = ["Astro", "Nuxt", "Vue", "Angular", "SolidJS", "Typescript", "Javascript", "Tailwind", "SASS", "CSS", "HTML", "SEO", "Websockets"];
 sortSkillsInPlaceByList(projects, sortedSkills);
 ---
 
@@ -167,21 +145,27 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                                 href={author.data.devto}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="socials__devto"
-                                aria-label="Visit Samuel Braun's Dev.to profile"
-                                title="Visit Samuel Braun's Dev.to profile"
+                                class="socials__devto badge badge--black "
+                                aria-label="Follow me on dev.to"
+                                title="Follow me on dev.to"
                             >
-                                <DevToIcon />
+                                <div class="flex text-white items-center">
+                                    <span class="mr-2 w-max">Follow me</span>
+                                    <DevToIcon />
+                                </div>
                             </a>
                             <a
                                 href={author.data.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="socials__linkedin"
-                                aria-label="Visit Samuel Braun's LinkedIn profile"
-                                title="Visit Samuel Braun's LinkedIn profile"
+                                class="socials__linkedin badge badge--black"
+                                aria-label="Connect with me on LinkedIn"
+                                title="Connect with me on LinkedIn"
                             >
-                                <LinkedInIcon />
+                                <div class="flex text-white items-center">
+                                    <span class="mr-2 w-max">Connect with me</span>
+                                    <LinkedInIcon />
+                                </div>
                             </a>
                         </div>
                     </div>
@@ -202,7 +186,7 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                 <h2>Experience</h2>
                 <div class="flow-content-big">
                     <div class="exp__point exp__point--normal flow-content">
-                        <div>
+                        <div class="exp__header">
                             <h3>School</h3>
                             <p class="text-primary">2018 - 2020</p>
                             <p class="text-primary">
@@ -239,7 +223,7 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                         </p>
                     </div>
                     <div class="exp__point exp__point--normal flow-content">
-                        <div>
+                        <div class="exp__header">
                             <h3>Voluntary Work</h3>
                             <p class="text-primary">2019 - 2021</p>
                             <p class="text-primary">
@@ -311,7 +295,7 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                         </p>
                     </div>
                     <div class="exp__point exp__point--normal flow-content">
-                        <div>
+                        <div class="exp__header">
                             <h3>Work at imat-uve</h3>
                             <p class="text-primary">2019 - now</p>
                             <p class="text-primary">
@@ -351,7 +335,7 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                         </p>
                     </div>
                     <div class="exp__point exp__point--normal flow-content">
-                        <div>
+                        <div class="exp__header">
                             <h3>Personal Development & Growth</h3>
                             <p class="text-primary">2020 - 2021</p>
                             <p class="text-primary">
@@ -420,7 +404,7 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                         </p>
                     </div>
                     <div class="exp__point exp__point--normal flow-content">
-                        <div>
+                        <div class="exp__header">
                             <h3>Bachelor's degree</h3>
                             <p class="text-primary">2021 - 2024</p>
                             <p class="text-primary">
@@ -493,7 +477,7 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                         </p>
                     </div>
                     <div class="exp__point exp__point--normal flow-content">
-                        <div>
+                        <div class="exp__header">
                             <h3>Blogging at Webry</h3>
                             <p class="text-primary">2023 - now</p>
                             <p class="text-primary">Building a blogging site</p>
@@ -506,7 +490,7 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                         </p>
                     </div>
                     <div class="exp__point exp__point--current">
-                        <div>
+                        <div class="exp__header">
                             <h3>Working for You</h3>
                             <p class="text-primary">2025 - future</p>
                             <p>
@@ -560,7 +544,7 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                                             </a>
                                             <a
                                                 href={project.link}
-                                                class="badge badge--clickable badge--active"
+                                                class="badge badge--clickable badge--active badge--black"
                                                 data-color="demo"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
@@ -594,7 +578,7 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                                         <a
                                             href={project.repo}
                                             class="badge badge--clickable badge--active"
-                                            data-color={project.repoType.toLowerCase()}
+                                            data-color={project.repoType}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
@@ -602,8 +586,7 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                                         </a>
                                         <a
                                             href={project.link}
-                                            class="badge badge--clickable badge--active"
-                                            data-color="demo"
+                                            class="badge badge--clickable badge--active badge--black"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
@@ -629,12 +612,12 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                         <a
                             href="mailto:office.samigo.a@gmail.com"
                             class="badge badge--primary badge--clickable badge--active"
-                            data-color="gmail">Gmail</a
+                            data-color="Gmail">Gmail</a
                         >
                         <a
                             href="https://www.linkedin.com/in/samuel-braun/"
                             class="badge badge--primary badge--clickable badge--active"
-                            data-color="linkedin">LinkedIn</a
+                            data-color="LinkedIn">LinkedIn</a
                         >
                     </div>
                 </div>
@@ -820,6 +803,10 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                 margin: 0 3rem;
             }
 
+            .exp__header {
+                font-style: italic;
+            }
+
             .exp__point {
                 position: relative;
                 padding-left: 3rem;
@@ -896,59 +883,79 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                 color: var(--badge-fg, var(--color-black));
             }
 
-            .badge--active[data-color="astro"] {
+            .badge--active[data-color="Astro"] {
                 --badge-bg: var(--color-astro);
                 --badge-fg: var(--color-white);
             }
 
-            .badge--active[data-color="typescript"] {
+            .badge--active[data-color="Typescript"] {
                 --badge-bg: var(--color-typescript);
                 --badge-fg: var(--color-white);
             }
 
-            .badge--active[data-color="tailwind"] {
+            .badge--active[data-color="Tailwind"] {
                 --badge-bg: var(--color-tailwind);
                 --badge-fg: var(--color-white);
             }
 
-            .badge--active[data-color="sass"],
-            .badge--active[data-color="scss"] {
+            .badge--active[data-color="SASS"] {
                 --badge-bg: var(--color-sass);
                 --badge-fg: var(--color-white);
             }
 
-            .badge--active[data-color="angular"] {
+            .badge--active[data-color="Angular"] {
                 --badge-bg: var(--color-angular);
                 --badge-fg: var(--color-white);
             }
 
-            .badge--active[data-color="gmail"] {
+            .badge--active[data-color="Gmail"] {
                 --badge-bg: var(--color-gmail);
                 --badge-fg: var(--color-white);
             }
 
-            .badge--active[data-color="linkedin"] {
+            .badge--active[data-color="LinkedIn"] {
                 --badge-bg: var(--color-linkedin);
                 --badge-fg: var(--color-white);
             }
 
-            .badge--active[data-color="javascript"] {
+            .badge--active[data-color="Javascript"] {
                 --badge-bg: var(--color-javascript);
                 --badge-fg: var(--color-black);
             }
 
-            .badge--active[data-color="github"] {
-                --badge-bg: var(--color-github);
+            .badge--active[data-color="GitHub"] {
+                --badge-bg: var(--color-black);
                 --badge-fg: var(--color-white);
             }
 
-            .badge--active[data-color="html"] {
+            .badge--active[data-color="HTML"] {
                 --badge-bg: var(--color-html);
                 --badge-fg: var(--color-white);
             }
 
-            .badge--active[data-color="css"] {
+            .badge--active[data-color="CSS"] {
                 --badge-bg: var(--color-css);
+                --badge-fg: var(--color-white);
+            }
+
+            .badge--active[data-color="Vue"] {
+                --badge-bg: var(--color-vue);
+                --badge-fg: var(--color-white);
+            }
+
+            .badge--active[data-color="Nuxt"] {
+                --badge-bg: var(--color-nuxtjs);
+                --badge-fg: var(--color-white);
+            }
+
+            .badge--active[data-color="SolidJS"] {
+                --badge-bg: var(--color-solidjs);
+                --badge-fg: var(--color-white);
+            }
+
+            .badge--active[data-color="Websockets"],
+            .badge--active[data-color="SEO"] {
+                --badge-bg: var(--color-gray);
                 --badge-fg: var(--color-white);
             }
 
@@ -1131,6 +1138,11 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                 .project-mobile-header {
                     flex-direction: column;
                     align-items: flex-start;
+                    gap: var(--flow-content-small);
+                }
+
+                .socials {
+                    flex-direction: column;
                     gap: var(--flow-content-small);
                 }
             }
