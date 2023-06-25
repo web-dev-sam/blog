@@ -1,3 +1,7 @@
+UX Debt:
+- Copy code button
+- Code type tag
+
 UI Debt:
 - spacing on mobile
 - better pfp

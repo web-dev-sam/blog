@@ -80,6 +80,10 @@
     --h3-font-size: clamp(1.25rem, 5vw, 1.953rem);
     --h4-font-size: clamp(1rem, 3vw, 1.563rem);
     --p-font-size: 1.125rem;
+
+    --scroll-track: var(--color-light-secondary);
+    --scroll-thumb: var(--color-dark-primary);
+    --scroll-thumb-hover: var(--color-dark-secondary);
 }
 
 .hide-non-mobile {
@@ -498,30 +502,22 @@ footer {
 /* General Custom Scrollbar styles */
 ::-webkit-scrollbar {
     width: 12px;
-    /* width of the entire scrollbar */
 }
 
 ::-webkit-scrollbar-track {
-    background-color: var(--color-black);
-    /* color of the tracking area */
+    background-color: var(--scroll-track);
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--color-light-secondary);
-    /* color of the scroll thumb */
-    border-radius: 2px;
-    /* roundness of the scroll thumb */
+    background-color: var(--scroll-thumb);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-light-triary);
-    /* color of the scroll thumb on hover */
+    background-color: var(--scroll-thumb-hover);
 }
 
 /* Firefox Custom Scrollbar styles */
 * {
     scrollbar-width: thin;
-    /* width of the entire scrollbar */
-    scrollbar-color: var(--color-light-secondary) var(--color-black);
-    /* color of the thumb and track */
+    scrollbar-color: var(--scroll-thumb) var(--scroll-track);
 }
