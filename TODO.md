@@ -1,6 +1,5 @@
 
 UX Debt:
-- sorting tags by most used
 - "See on Dev.to" button instead of icon
 - /about - Make button instead of icon
 - Making Projects header sticky when "see more" is clicked
@@ -23,3 +22,7 @@ Content Debt:
 - updating live link for tourney (https://www.youtube.com/watch?v=-ejMSWVJk8M&ab_channel=Magnesium)
 - adding missing projects
 - devto comments
+
+Nice to have:
+- custom scrollbar
+- better emoji font

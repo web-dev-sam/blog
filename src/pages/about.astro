@@ -9,16 +9,57 @@ import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
 import Analytics from "../components/Analytics.astro";
 import Footer from "../components/Footer.astro";
 
+interface Project {
+    name: string;
+    description: string;
+    link: string;
+    image: string;
+    skills: string[];
+    repo: string;
+    repoType: string;
+}
+
+function getSkillsByFrequency(projectsData: Project[]): string[] {
+    // Count the frequency of each skill
+    const skillFrequency: Record<string, number> = {};
+
+    for (let project of projectsData) {
+        for (let skill of project.skills) {
+            if (skill in skillFrequency) {
+                skillFrequency[skill]++;
+            } else {
+                skillFrequency[skill] = 1;
+            }
+        }
+    }
+
+    // Sort the skills by their frequency in descending order (most common to least common)
+    const sortedSkills = Object.keys(skillFrequency).sort((a, b) => {
+        return skillFrequency[b] - skillFrequency[a];
+    });
+
+    return sortedSkills;
+}
+
+function sortSkillsInPlaceByList(projectsData: Project[], sortedSkills: string[]): void {
+    // Sort the skills in place for each project based on the provided sorted skills array
+    for (let project of projectsData) {
+        project.skills.sort((a, b) => {
+            return sortedSkills.indexOf(b) - sortedSkills.indexOf(a);
+        });
+    }
+}
+
 const authors = await getCollection("author");
 const author = authors.find((author) => author.slug === "samuel-braun")!;
-const projects = [
+const projects: Project[] = [
     {
         name: "Webry",
         description:
             "Webry is a project I started to share my knowledge and experience as well as tools I build. Its all about the modern web. This is a place where I can share my thoughts and ideas with the world. More content will be added soon.",
         link: "https://www.webry.com",
         image: "/assets/projects/webry.svg",
-        skills: ["astro", "typescript", "javascript", "css", "seo"],
+        skills: ["typescript", "javascript", "css", "seo", "astro"],
         repo: "https://github.com/MindLaborDev/blog",
         repoType: "GitHub",
     },
@@ -28,7 +69,7 @@ const projects = [
             "A Web Application that renders the Mandelbrot using GPU power with three.js and Angular. This was one of my first projects that went through many iterations. This is the current most recent version.",
         link: "https://frac.webry.com",
         image: "/assets/projects/frac.webp",
-        skills: ["angular", "typescript", "javascript", "sass", "html"],
+        skills: ["typescript", "javascript", "sass", "html", "angular"],
         repo: "https://github.com/MindLaborDev/Frac",
         repoType: "GitHub",
     },
@@ -78,11 +119,13 @@ const projects = [
             "A custom overlay for the Beat Saber tournament I hosted. It was built with Vue using websockets to communicate with the game.",
         link: "https://github.com/mgtourney/overlay",
         image: "/assets/projects/tourney.webp",
-        skills: ["vue", "typescript", "css", "html", "websocket"],
+        skills: ["websocket", "vue", "typescript", "css", "html"],
         repo: "https://github.com/mgtourney/overlay",
         repoType: "GitHub",
     }
 ];
+const sortedSkills = getSkillsByFrequency(projects);
+sortSkillsInPlaceByList(projects, sortedSkills);
 ---
 
 <html lang="en">
@@ -482,13 +525,7 @@ const projects = [
                     <p>Choose the skill you want to see projects for:</p>
                     <div class="skill-badges">
                         {
-                            [
-                                ...new Set(
-                                    projects
-                                        .map((project) => project.skills)
-                                        .flat()
-                                ),
-                            ].map((skill) => (
+                            sortedSkills.map((skill) => (
                                 <button
                                     class="badge badge--primary badge--clickable"
                                     data-skill={skill}
