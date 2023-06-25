@@ -494,3 +494,34 @@ footer {
     --badge-bg: var(--color-gray);
     --badge-fg: var(--color-white);
 }
+
+/* General Custom Scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
+    /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--color-black);
+    /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-light-secondary);
+    /* color of the scroll thumb */
+    border-radius: 2px;
+    /* roundness of the scroll thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-light-triary);
+    /* color of the scroll thumb on hover */
+}
+
+/* Firefox Custom Scrollbar styles */
+* {
+    scrollbar-width: thin;
+    /* width of the entire scrollbar */
+    scrollbar-color: var(--color-light-secondary) var(--color-black);
+    /* color of the thumb and track */
+}

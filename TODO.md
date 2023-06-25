@@ -8,7 +8,3 @@ Content Debt:
 
 Technical Debt:
 - main svg background as HTML
-
-Nice to have:
-- custom scrollbar
-- better emoji font
