@@ -9,7 +9,6 @@ UI Debt:
 - blog = 50% (maybe headings centered)
 - No name in blog
 - better pfp
-- "read article" button height consistency
 - likes (maybe like "See on Dev.to")
 - blog design cleaning
 - spacing on mobile

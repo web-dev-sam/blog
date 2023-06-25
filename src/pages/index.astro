@@ -91,14 +91,15 @@ const schema = JSON.stringify({
                                         <p class="card-description">
                                             {post.data.share.description}
                                         </p>
-                                        <a
-                                            class="btn card-button"
-                                            aria-label={`Go to the post: ${post.data.title}`}
-                                            href={`/article/${post.slug}`}
-                                        >
-                                            Read Article
-                                        </a>
                                     </div>
+                                    <div class="flex-spacer"></div>
+                                    <a
+                                        class="btn card-button w-full"
+                                        aria-label={`Go to the post: ${post.data.title}`}
+                                        href={`/article/${post.slug}`}
+                                    >
+                                        Read Article
+                                    </a>
                                 </article>
                             ))
                         }
