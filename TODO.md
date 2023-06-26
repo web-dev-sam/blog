@@ -1,7 +1,4 @@
 UX Debt:
-- Copy code button
-- Code type tag
-- make "articles v" a button that scrolls the user to the articles section
 - dark mode
 
 UI Debt:
@@ -14,3 +11,4 @@ Content Debt:
 
 Technical Debt:
 - main svg background as HTML
+- add vue integration

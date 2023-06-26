@@ -245,7 +245,7 @@ pre {
 
 body,
 .text-text {
-    font-size: 1rem;
+    font-size: var(--p-font-size);
     font-weight: 400;
 }
 
@@ -523,4 +523,36 @@ footer {
 * {
     scrollbar-width: thin;
     scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+}
+
+/* CODE */
+
+.copy-to-clipboard {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: background 0.2s ease;
+    color: var(--color-white);
+}
+
+.copy-to-clipboard svg {
+    width: 1em;
+    height: 1em;
+}
+
+.copy-to-clipboard:hover {
+    background: var(--color-dark-secondary)
+}
+
+.copied {
+    background: var(--color-green) !important;
+}
+
+.astro-code {
+    position: relative;
 }
