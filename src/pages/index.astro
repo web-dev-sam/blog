@@ -59,13 +59,13 @@ const schema = JSON.stringify({
             <LandingBackground />
             <div class="container">
                 <section class="articles">
-                    <div class="articles_header">
+                    <a class="articles__header" href="#articles">
                         <h2 class="articles__title">articles</h2>
                         <div class="articles__arrow">
                             <ArrowDown />
                         </div>
-                    </div>
-                    <div class="articles__grid">
+                    </a>
+                    <div class="articles__grid" id="articles">
                         {
                             articles.map((post) => (
                                 <article class="card">
@@ -148,11 +148,20 @@ const schema = JSON.stringify({
                 color: var(--color-gray-500);
             }
 
-            .articles_header {
+            .articles__header {
                 height: var(--header-height);
                 display: flex;
+                width: min-content;
+                margin: auto;
+                justify-content: center;
                 flex-direction: column;
-                transform: translateY(-3vh);
+                transform: translateY(-5vh);
+                cursor: pointer;
+                transition: transform 0.2s ease-in-out;
+            }
+
+            .articles__header:hover {
+                transform: translateY(-5vh) scale(1.1);
             }
 
             .articles__arrow {
