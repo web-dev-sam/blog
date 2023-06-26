@@ -208,7 +208,7 @@ sortSkillsInPlaceByList(projects, sortedSkills);
             </section>
         </main>
         <section class="container">
-            <div class="experience text-left flow-content-big">
+            <div class="experience experience--collapsed text-left flow-content-big">
                 <h2>Experience</h2>
                 <div class="flow-content-big">
                     <div class="exp__point exp__point--normal flow-content">
@@ -527,6 +527,9 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                     </div>
                 </div>
             </div>
+            <button class="experience-see-more badge badge--black"
+                >See More</button
+            >
         </section>
         <section class="container">
             <div class="projects text-left flow-content">
@@ -666,6 +669,9 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                 const projectsSeeMore =
                     document.querySelector(".projects-see-more");
                 projectsSeeMore.addEventListener("click", toggleProjects);
+                const experienceSeeMore =
+                    document.querySelector(".experience-see-more");
+                experienceSeeMore.addEventListener("click", toggleExperience);
 
                 const imgs = [
                     ...document.querySelectorAll(".project-card__image img"),
@@ -727,6 +733,17 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                         "project-cards--collapsed",
                         !projectCards.classList.contains(
                             "project-cards--collapsed"
+                        )
+                    );
+                }
+
+                function toggleExperience() {
+                    const experienceCards =
+                        document.querySelector(".experience");
+                    experienceCards.classList.toggle(
+                        "experience--collapsed",
+                        !experienceCards.classList.contains(
+                            "experience--collapsed"
                         )
                     );
                 }
@@ -807,7 +824,8 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                 margin: 3rem;
             }
 
-            .projects {
+            .projects,
+            .experience {
                 position: relative;
             }
 
@@ -850,21 +868,21 @@ sortSkillsInPlaceByList(projects, sortedSkills);
             .exp__point::before {
                 content: "";
                 position: absolute;
-                top: 0;
-                left: 0;
-                width: 2rem;
-                height: 2rem;
-                border: 2px solid var(--color-black);
+                top: 1rem;
+                left: 0.5rem;
+                width: 1rem;
+                height: 1rem;
                 border-radius: 50%;
+                background-color: var(--color-black);
             }
 
             .exp__point--normal::after {
                 content: "";
                 position: absolute;
-                top: 1rem;
+                top: 0rem;
                 left: 1rem;
-                width: 2px;
-                height: calc(100% + 1rem);
+                width: 3px;
+                height: calc(100% + 3rem);
                 background-color: var(--color-black);
                 transform: translateY(1rem) translateX(-50%);
             }
@@ -899,14 +917,16 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                 display: none;
             }
 
-            .project-cards--collapsed {
+            .project-cards--collapsed,
+            .experience--collapsed {
                 max-height: 75vh;
                 overflow: hidden;
                 position: relative;
                 margin-top: 0 !important; /* override margin collapse caused by position: relative */
             }
 
-            .project-cards--collapsed::before {
+            .project-cards--collapsed::before,
+            .experience--collapsed::before {
                 content: "";
                 position: absolute;
                 bottom: 0;
@@ -920,9 +940,11 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                     var(--color-white)
                 );
                 pointer-events: none;
+                z-index: 1;
             }
 
-            .project-cards--collapsed::after {
+            .project-cards--collapsed::after,
+            .experience--collapsed::after {
                 content: "";
                 position: absolute;
                 bottom: 0;
@@ -933,21 +955,23 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                 pointer-events: none;
             }
 
-            .projects-see-more {
+            .projects-see-more,
+            .experience-see-more {
                 display: inline-block;
                 position: absolute;
                 text-align: center;
-                bottom: 0;
                 left: 50%;
                 transform: translateX(-50%);
                 display: none;
             }
 
-            .project-cards--collapsed + .projects-see-more {
+            .project-cards--collapsed + .projects-see-more,
+            .experience--collapsed + .experience-see-more {
                 display: block;
             }
 
-            .projects-see-more:hover {
+            .projects-see-more:hover,
+            .experience-see-more:hover {
                 opacity: 0.8;
             }
 
