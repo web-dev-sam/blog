@@ -36,7 +36,7 @@ const articles = unsortedarticles.sort((a, b) => b.data.date.getTime() - a.data.
         <Navigation />
         <main class="container">
             <section class="flow-content-big">
-                <h1>All Articles</h1>
+                <h1 class="font-bold">All Articles</h1>
                 <section class="articles">
                     <div class="articles__grid">
                         {
@@ -72,5 +72,10 @@ const articles = unsortedarticles.sort((a, b) => b.data.date.getTime() - a.data.
             </section>
         </main>
         <Footer />
+        <style>
+            main {
+                min-height: 75vh;
+            }
+        </style>
     </body>
 </html>

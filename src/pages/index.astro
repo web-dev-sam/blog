@@ -50,9 +50,9 @@ const schema = JSON.stringify({
     <body>
         <Navigation />
         <section class="hero">
-            <h1>
-                <span class="hero__before">Welcome to</span>
-                <span>My <em>Modern</em> Web Blog</span>
+            <h1 class="leading-relaxed">
+                <span class="hero__before capitalize font-thin">Welcome to</span>
+                <span class="font-bold uppercase">My <em>Modern</em> Web Blog</span>
             </h1>
         </section>
         <main>
@@ -60,7 +60,7 @@ const schema = JSON.stringify({
             <div class="container">
                 <section class="articles">
                     <a class="articles__header" href="#articles">
-                        <h2 class="articles__title">articles</h2>
+                        <h2 class="articles__title font-bold">Articles</h2>
                         <div class="articles__arrow">
                             <ArrowDown />
                         </div>
@@ -68,7 +68,7 @@ const schema = JSON.stringify({
                     <div class="articles__grid" id="articles">
                         {
                             articles.map((post) => (
-                                <article class="card">
+                                <article class="card mt-6">
                                     <a
                                         aria-label={`Go to the post: ${post.data.title}`}
                                         href={`/article/${post.slug}`}
@@ -106,17 +106,21 @@ const schema = JSON.stringify({
                     </div>
                 </section>
             </div>
+            <script async data-uid="bc9a53f3ec" src="https://webry.ck.page/bc9a53f3ec/index.js"></script>
         </main>
         <Footer />
 
         <style>
             /* HERO */
 
+            main {
+                transform: translateY(-5vh);
+            }
+
             .hero {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                text-transform: uppercase;
                 text-align: center;
                 height: calc(100vh - var(--header-height) * 2);
                 background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1080 720' fill='none'%3E%3Cpath d='M0 0H1080V720C708.5 542 404.5 538 0 720C0 512.5 0 0 0 0Z' fill='%230e0e0e'%3E%3Cscript xmlns=''/%3E%3C/path%3E%3C/svg%3E") no-repeat center bottom;
@@ -145,7 +149,6 @@ const schema = JSON.stringify({
             .hero__before {
                 display: block;
                 font-size: var(--p-font-size);
-                color: var(--color-gray-500);
             }
 
             .articles__header {
@@ -155,13 +158,12 @@ const schema = JSON.stringify({
                 margin: auto;
                 justify-content: center;
                 flex-direction: column;
-                transform: translateY(-5vh);
                 cursor: pointer;
                 transition: transform 0.2s ease-in-out;
             }
 
             .articles__header:hover {
-                transform: translateY(-5vh) scale(1.1);
+                transform: scale(1.05);
             }
 
             .articles__arrow {
