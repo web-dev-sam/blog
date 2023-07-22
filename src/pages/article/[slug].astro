@@ -130,7 +130,7 @@ const { Content } = await post.render();
         <title>{post.data.title}</title>
 
         <link rel="canonical" href={post.data.devto} />
-        <script type="application/ld+json" set:html={schema}></script>
+        <script type="application/ld+json" set:html={schema} />
         <Analytics />
     </head>
     <body>
@@ -141,7 +141,12 @@ const { Content } = await post.render();
                 devto-id={post.data.devtoid}
             >
                 <div class="relative">
-                    <img src={post.data.cover} alt="Cover" class="cover" />
+                    <img
+                        transition:name={`article-cover-${post.data.devtoid}`}
+                        src={post.data.cover}
+                        alt="Cover"
+                        class="cover"
+                    />
                     <a
                         class="read-on-devto absolute bottom-0 right-0 badge badge--clickable badge--active badge--black"
                         href={post.data.devto}
