@@ -10,7 +10,9 @@ import Footer from "../components/Footer.astro";
 import LandingBackground from "../components/assets/LandingBackground.astro";
 
 const unsortedarticles = await getCollection("blog");
-const articles = unsortedarticles.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const articles = unsortedarticles.sort(
+    (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
 const schema = JSON.stringify({
     "@context": "https://schema.org/",
     "@type": "WebSite",
@@ -30,29 +32,44 @@ const schema = JSON.stringify({
         <link rel="canonical" href="https://www.webry.com/" />
 
         <!-- Facebook Meta Tags -->
-        <meta property="og:url" content="https://www.webry.com">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="Webry | The Modern Web Blog">
-        <meta property="og:description" content="Step into my fresh web hub! Discover the magic of modern web creation, harness top-notch practices, and elevate your digital journey with my lively array of articles.">
-        <meta property="og:image" content="https://www.webry.com/og-cover.jpg">
-      
-        <!-- Twitter Meta Tags -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta property="twitter:domain" content="webry.com">
-        <meta property="twitter:url" content="https://www.webry.com">
-        <meta name="twitter:title" content="Webry | The Modern Web Blog">
-        <meta name="twitter:description" content="Step into my fresh web hub! Discover the magic of modern web creation, harness top-notch practices, and elevate your digital journey with my lively array of articles.">
-        <meta name="twitter:image" content="https://www.webry.com/og-cover.jpg">
+        <meta property="og:url" content="https://www.webry.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Webry | The Modern Web Blog" />
+        <meta
+            property="og:description"
+            content="Step into my fresh web hub! Discover the magic of modern web creation, harness top-notch practices, and elevate your digital journey with my lively array of articles."
+        />
+        <meta
+            property="og:image"
+            content="https://www.webry.com/og-cover.jpg"
+        />
 
-        <script type="application/ld+json" set:html={schema}></script>
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="webry.com" />
+        <meta property="twitter:url" content="https://www.webry.com" />
+        <meta name="twitter:title" content="Webry | The Modern Web Blog" />
+        <meta
+            name="twitter:description"
+            content="Step into my fresh web hub! Discover the magic of modern web creation, harness top-notch practices, and elevate your digital journey with my lively array of articles."
+        />
+        <meta
+            name="twitter:image"
+            content="https://www.webry.com/og-cover.jpg"
+        />
+
+        <script type="application/ld+json" set:html={schema} />
         <Analytics />
     </head>
     <body>
         <Navigation />
         <section class="hero">
             <h1 class="leading-relaxed">
-                <span class="hero__before capitalize font-thin">Welcome to</span>
-                <span class="font-bold uppercase">My <em>Modern</em> Web Blog</span>
+                <span class="hero__before capitalize font-thin">Welcome to</span
+                >
+                <span class="font-bold uppercase"
+                    >My <em>Modern</em> Web Blog</span
+                >
             </h1>
         </section>
         <main>
@@ -92,7 +109,7 @@ const schema = JSON.stringify({
                                             {post.data.share.description}
                                         </p>
                                     </div>
-                                    <div class="flex-spacer"></div>
+                                    <div class="flex-spacer" />
                                     <a
                                         class="btn card-button w-full"
                                         aria-label={`Go to the post: ${post.data.title}`}
@@ -106,7 +123,10 @@ const schema = JSON.stringify({
                     </div>
                 </section>
             </div>
-            <script async data-uid="bc9a53f3ec" src="https://webry.ck.page/bc9a53f3ec/index.js"></script>
+            <script
+                async
+                data-uid="bc9a53f3ec"
+                src="https://webry.ck.page/bc9a53f3ec/index.js"></script>
         </main>
         <Footer />
 
@@ -123,7 +143,8 @@ const schema = JSON.stringify({
                 justify-content: center;
                 text-align: center;
                 height: calc(100vh - var(--header-height) * 2);
-                background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1080 720' fill='none'%3E%3Cpath d='M0 0H1080V720C708.5 542 404.5 538 0 720C0 512.5 0 0 0 0Z' fill='%230e0e0e'%3E%3Cscript xmlns=''/%3E%3C/path%3E%3C/svg%3E") no-repeat center bottom;
+                background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1080 720' fill='none'%3E%3Cpath d='M0 0H1080V720C708.5 542 404.5 538 0 720C0 512.5 0 0 0 0Z' fill='%230e0e0e'%3E%3Cscript xmlns=''/%3E%3C/path%3E%3C/svg%3E")
+                    no-repeat center bottom;
                 background-size: cover;
                 color: var(--color-white);
             }
@@ -134,15 +155,16 @@ const schema = JSON.stringify({
 
             @media (min-width: 1080px) {
                 .hero {
-                    --clip-path-size-factor: 2; 
-                    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='640' viewBox='0 0 1920 640' fill='none'%3E%3Cpath d='M0 0H1920V640C1255.93 512.637 719.266 504.677 0 640C0 514.51 0 0 0 0Z' fill='%230e0e0e'%3E%3Cscript xmlns=''/%3E%3C/path%3E%3C/svg%3E") no-repeat center center;
+                    --clip-path-size-factor: 2;
+                    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='640' viewBox='0 0 1920 640' fill='none'%3E%3Cpath d='M0 0H1920V640C1255.93 512.637 719.266 504.677 0 640C0 514.51 0 0 0 0Z' fill='%230e0e0e'%3E%3Cscript xmlns=''/%3E%3C/path%3E%3C/svg%3E")
+                        no-repeat center center;
                     background-size: cover;
                 }
             }
-            
+
             @media (min-width: 1440px) {
                 .hero {
-                    --clip-path-size-factor: 2.5; 
+                    --clip-path-size-factor: 2.5;
                 }
             }
 
