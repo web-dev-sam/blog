@@ -153,7 +153,7 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                             width="200"
                             height="200"
                             class="avatar mobile-img"
-                            src="/assets/author/pfp/samuel-braun.jpg"
+                            src="/assets/author/pfp/samuel-braun-new.jpg"
                             alt="Samuel Braun"
                         />
                         <p>
@@ -197,10 +197,10 @@ sortSkillsInPlaceByList(projects, sortedSkills);
                     </div>
                     <div class="avatar-flex-item">
                         <img
-                            width="200"
-                            height="200"
+                            width="300"
+                            height="300"
                             class="avatar desktop-img"
-                            src="/assets/author/pfp/samuel-braun.jpg"
+                            src="/assets/author/pfp/samuel-braun-new.jpg"
                             alt="Samuel Braun"
                         />
                     </div>
@@ -843,7 +843,7 @@ sortSkillsInPlaceByList(projects, sortedSkills);
             .avatar {
                 margin-left: auto;
                 margin-right: auto;
-                max-width: 200px;
+                max-width: 300px;
                 border-radius: 2px;
             }
 
@@ -1040,6 +1040,12 @@ sortSkillsInPlaceByList(projects, sortedSkills);
 
             section + section {
                 margin: 12rem 0;
+            }
+
+            @media (max-width: 1024px) {
+                .avatar {
+                    max-width: 200px;
+                }
             }
 
             @media (max-width: 768px) {
