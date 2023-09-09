@@ -73,7 +73,7 @@
     --flow-content-small: 1rem;
     --flow-content-big: 3rem;
     --header-height: 8rem;
-    --border-radius: 3px;
+    --border-radius: 1rem;
 
     --h1-font-size: clamp(2.25rem, 6vw, 3.052rem);
     --h2-font-size: clamp(1.8rem, 5vw, 2.5rem);
@@ -567,9 +567,14 @@ footer {
 }
 
 [data-element="powered-by"] {
-    opacity: 0.4 !important;
+    opacity: 0.2 !important;
 }
 
 [name="email_address"] {
     height: 100%;
+}
+
+[name="email_address"],
+.formkit-submit {
+    border-radius: 1rem !important;
 }

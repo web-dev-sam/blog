@@ -207,16 +207,7 @@ const { Content } = await post.render();
                         </div>
                         <div>
                             <div class="socials">
-                                <a
-                                    href={post.data.devto}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="socials__devto"
-                                    aria-label="Visit this post on Dev.to"
-                                    title="Visit this post on Dev.to"
-                                >
-                                    <Likes devtoId={post.data.devtoid} />
-                                </a>
+                                <Likes devtoId={post.data.devtoid} />
                             </div>
                         </div>
                     </div>
@@ -313,7 +304,8 @@ const { Content } = await post.render();
             }
 
             .cover {
-                border-radius: 0.5rem;
+                border-radius: 1rem;
+                width: 100%;
             }
 
             .author-wrapper {
