@@ -8,7 +8,4 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
     site: "https://www.webry.com",
     integrations: [tailwind(), mdx(), sitemap()],
-    experimental: {
-        viewTransitions: true,
-    },
 });
