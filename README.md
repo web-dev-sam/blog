@@ -1,12 +1,54 @@
-<div align="center">
-  <a href="https://www.webry.com/"><img width="70%" src="https://github.com/MindLaborDev/blog/blob/master/public/og-cover.jpg?raw=true"/> </a>
+# Astro Starter Kit: Basics
 
-<h1 align="center">Webry</h1>
-<p>Webry is a project I started to share my knowledge and experience as well as tools I build. Its all about the modern web. This is a place where I can share my thoughts and ideas with the world.<br><br>I will add more content with time.</p>
-  
-<a href="https://github.com/MindLaborDev/blog/tree/post-2/src/content/blog">
-<img align="center" src="https://img.shields.io/badge/Edit%20Articles-0e0e0e?style=for-the-badge"/>
-</a>
- 
-</div>
+```sh
+npm create astro@latest -- --template basics
+```
 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+
+![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── components/
+│   │   └── Card.astro
+│   ├── layouts/
+│   │   └── Layout.astro
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
+
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
