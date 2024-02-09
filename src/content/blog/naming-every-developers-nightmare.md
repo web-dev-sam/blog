@@ -20,7 +20,6 @@ share:
   description: >
     Improve your code's readability with my guide on variable naming. Explore a powerful naming pattern to create self-explanatory and maintainable code, enhancing your programming experience and productivity.
 ---
-import VideoGif from '../../components/VideoGif.astro';
 
 Aah.. naming things. A developer's favorite brain sport, nestled somewhere between attending endless meetings and refactoring code. As developers, we know that can be both a blessing and a curse. It's a critical part of our work, but it can lead to some hilarious but most likely frustrating names. In this post, I'll show a way we can think of variables and how you can use them effectively. Even if you feel confident naming your variables, are you also using their full potential? 🤔
 
