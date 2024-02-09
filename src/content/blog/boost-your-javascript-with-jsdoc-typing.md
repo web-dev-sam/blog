@@ -23,6 +23,7 @@ share:
     Explore my in-depth guide on leveraging JSDoc to enhance your JavaScript code with robust typing. Boost code quality, maintainability, and developer productivity with this powerful tool.
 ---
 
+
 There are many reasons why you can't or don't want to use TypeScript in your project. One common reason is that you are using a legacy codebase that is not compatible with TypeScript. Or the switch to TypeScript is harder than everyone tells you. For whatever reason, you are stuck with JavaScript. But that doesnt completely mean you have to give up on the benefits of TypeScript. In this article, we will explore the magic of JSDoc typing, with which you can use most TypeScript features right away. 🧙
 
 
